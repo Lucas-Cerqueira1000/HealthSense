@@ -161,6 +161,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             font-size:20px;
             font-weight: bold;
         }
+        #mensagem::placeholder
+        {
+            color: white;
+            opacity: 0.7;
+            
+        }
+        #nome::placeholder
+        {
+            color: white;
+            opacity: 0.7;
+        }
+        #email::placeholder
+        {
+            color: white;
+            opacity: 0.7;
+        }
+        #assunto::placeholder
+        {
+            color: white;
+            opacity: 0.7;
+        }
         </style>
     </head>
     <body>
@@ -228,10 +249,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                     <textarea name="mensagem" id="mensagem" placeholder="Digite aqui a sua mensagem." required data-maxlength="700"></textarea>
                     <div id="contador">0 / 700</div>
                     <br><br>
-                    
-                    <button type="submit" class="btn btn-success">Enviar Mensagem</button>
-                    <!-- <br><br> -->
-                    <button type="reset" class="btn btn-danger">Limpar Mensagem</button>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">Enviar Mensagem</button>
+                        <!-- <br><br> -->
+                        <button type="reset" class="btn btn-danger">Limpar Mensagem</button>
+                    </div>
                 </form>
             </section>
             <br><br><br><br>
