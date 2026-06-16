@@ -1,0 +1,81 @@
+/* Definição de Variáveis - Tema Claro (Padrão) */
+:root {
+    --bg-color: #f4f4f9;
+    --text-color: #333;
+    --accent-color: #3498db;
+    --card-bg: #ffffff;
+    --footer-copy: #333;
+}
+
+/* Redefinição de Variáveis - Tema Escuro */
+/* Quando o body tiver a classe .dark-theme, esses valores substituem os acima */
+body.dark-theme {
+    --bg-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --accent-color: #f1c40f;
+    --card-bg: #2d2d2d;
+    --footer-copy: #f1c40f;
+}
+
+body {
+    background-color: var(--bg-color); /* Agora ele usa a variável dinâmica */
+    color: var(--text-color);
+    transition: background-color 0.4s ease, color 0.4s ease;
+    margin: 0;
+}
+
+/* Aplicando cores aos textos específicos */
+#mode-label, #copy, .nav-links li a {
+    color: var(--text-color);
+}
+
+/* Estilo do Botão (Switch) */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+}
+
+.theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+}
+
+.theme-switch input { display: none; }
+
+.slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    border-radius: 50%;
+}
+
+/* Cor de destaque quando o checkbox está marcado */
+input:checked + .slider {
+    background-color: var(--accent-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}

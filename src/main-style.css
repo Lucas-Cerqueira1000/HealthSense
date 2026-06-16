@@ -1,0 +1,337 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --verde: #141c16;
+    --bege: #fff3df;
+    --vermelho: #f3705b;
+    --verdeescuro: #3b573e;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: "Comfortaa", sans-serif;
+    overflow-x: hidden;
+}
+
+header {
+    background-color: var(--verde);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 3rem;
+    color: white;
+}
+
+#logo1 {
+    max-width: 260px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+    font-size: 1.3rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    opacity: 0.7;
+}
+
+.menu-toggle {
+    display: none;
+    position: relative;
+    width: 35px;
+    height: 26px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.menu-toggle .bar {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background-color: white;
+    left: 0;
+    transition: 0.3s ease;
+}
+
+.menu-toggle .bar:nth-child(1) {
+    top: 0;
+}
+
+.menu-toggle .bar:nth-child(2) {
+    top: 11px;
+}
+
+.menu-toggle .bar:nth-child(3) {
+    top: 22px;
+}
+
+.menu-toggle.active .bar:nth-child(1) {
+    top: 11px;
+    transform: rotate(45deg);
+}
+
+.menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active .bar:nth-child(3) {
+    top: 11px;
+    transform: rotate(-45deg);
+}
+
+main {
+    flex: 1;
+    background-color: var(--bege);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+#logo {
+    width: 100%;
+    max-width: 700px;
+}
+
+footer {
+    background-color: var(--verde);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+#copy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    z-index: 999;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+@media (max-width: 1100px) {
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        height: 100vh;
+        width: 80%;
+        max-width: 340px;
+        background-color: var(--verde);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+        font-size: 1.5rem;
+        transition: 0.4s ease;
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        left: 0;
+    }
+
+    #logo {
+        max-width: 320px;
+    }
+}
+
+@media (max-width: 500px) {
+
+    #logo {
+        max-width: 420px;
+    }
+
+    #logo1 {
+        max-width: 180px;
+    }
+}
+/* 1. Definir a animação */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* Começa um pouco abaixo */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* Termina na posição original */
+  }
+}
+
+/* 2. Aplicar a animação na imagem */
+#logo, #logo1, h1, .faq-container{
+  animation: fadeIn 1.5s ease-in-out forwards;
+}
+#prints, .faq-container, #faq, .faq-item, .faq-question, .faq-answer
+{
+    animation: fadeIn 1.7s ease-in-out forwards;
+}
+
+/* Estilos do modo escuro */
+
+/* Ajuste nas variáveis principais */
+:root {
+    --verde: #141c16;
+    --bege: #fff3df; /* Cor do modo claro */
+    --text-color: #333;
+    --accent-color: #3498db;
+}
+
+/* Quando o modo escuro estiver ativo */
+body.dark-theme {
+    --bege: #202020;   /* O Bege agora vira cinza escuro */
+    --text-color: #f4f4f9;
+    --accent-color: var(--bege);
+}
+footer.dark-theme
+{
+    
+}
+/* O Main deve usar a variável que muda */
+main {
+    flex: 1;
+    background-color: var(--bege); /* Esta variável agora é dinâmica */
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column; /* Para alinhar o switch e a logo verticalmente */
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Ajuste no rótulo do modo para aparecer sobre o fundo */
+#mode-label {
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+/* Mantenha o restante do estilo do Switch (slider, round, etc) que você já tem */
+/* Estilo do Botão (Switch) */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+}
+
+.theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+}
+
+.theme-switch input { display: none; }
+
+.slider {
+    background-color: var(--bege);
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    background-color: var(--verdeescuro);
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+    border-radius: 50%;
+    /* border: 20px; */
+}
+
+/* Cor de destaque quando o checkbox está marcado */
+input:checked + .slider {
+    background-color: var(--accent-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Estilos da barra de navegação */
+
+/* 1. Largura da barra de navegação vertical */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+/* 2. O fundo da barra (onde a barra corre) */
+::-webkit-scrollbar-track {
+  background: var(--bege);
+  border-radius: 8px;
+}
+
+/* 3. A barra que você arrasta (thumb) */
+::-webkit-scrollbar-thumb {
+  background: var(--verde);
+  border-radius: 8px;
+}
+
+/* 4. Efeito ao passar o mouse por cima da barra */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--verdeescuro);
+}
+#nossoprojeto, #btnvoltar
+{
+    animation: fadeIn 1s ease-in-out forwards;
+    /* Define as regras de como a animação deve se comportar */
+    @keyframes fadeIn {
+        from {
+            opacity: 0; /* Começa invisível */
+        }
+        to {
+            opacity: 1; /* Termina totalmente visível */
+        }
+    }
+}
