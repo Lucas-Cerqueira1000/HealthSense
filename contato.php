@@ -106,7 +106,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                 top: 0;
             }
         }
-        #nome, #email {
+        #nome
+        {
             background-color: var(--verdeescuro);
             width: 600px;
             height: 100px;
@@ -116,7 +117,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             color: white;
             /* cursor: help; */
         }
-        #assunto {
+        #email
+        {
+            background-color: var(--verdeescuro);
+            width: 600px;
+            height: 180px;
+            resize: none;
+            border-radius: 5px;
+            font-size: 20px;
+            color: white;
+            /* cursor: help; */
+        }
+        #assunto 
+        {
             background-color: var(--verdeescuro);
             width: 600px;
             height: 200px;
@@ -126,7 +139,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             color: white;
             /* cursor: help; */
         }
-        #mensagem {
+        #mensagem 
+        {
             background-color: var(--verdeescuro);
             width: 600px;
             height: 400px;
@@ -136,12 +150,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             color: white;
             /* cursor: help; */
         }
-        #contato {
+        #contato 
+        {
             display: flex;
             flex-direction: column;
             justify-content: baseline;
         }
-        #lbl {
+        #lbl 
+        {
             font-size:20px;
             font-weight: bold;
         }
@@ -194,19 +210,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                 <form action="contato.php" method="POST">
                     <label id="lbl">Nome:</label>
                     <br>
-                    <textarea name="nome" id="nome" placeholder="Digite aqui o seu nome completo." required></textarea>
+                    <textarea name="nome" id="nome" placeholder="Digite aqui o seu nome completo." required maxlength="150" data-maxlength="200" rows="5"></textarea>
+                    <div id="contador">0 / 150</div>
                     <br>
                     <label id="lbl">E-mail:</label>
                     <br>
-                    <textarea name="email" id="email" placeholder="Digite aqui o seu e-mail para lhe contatarmos posteriormente." required></textarea>
+                    <textarea name="email" id="email" placeholder="Digite aqui o seu e-mail para lhe contatarmos posteriormente." required maxlength="256" data-maxlength="256" rows="5"></textarea>
+                    <div id="contador">0 / 256</div>
                     <br>
                     <label id="lbl">Assunto:</label>
                     <br>
-                    <textarea name="assunto" id="assunto" placeholder="Digite aqui o assunto da mensagem." required></textarea>
+                    <textarea name="assunto" id="assunto" placeholder="Digite aqui o assunto da mensagem." required data-maxlength="305"></textarea>
+                    <div id="contador">0 / 305</div>
                     <br>
                     <label id="lbl">Mensagem:</label>
                     <br>
-                    <textarea name="mensagem" id="mensagem" placeholder="Digite aqui a sua mensagem." required></textarea>
+                    <textarea name="mensagem" id="mensagem" placeholder="Digite aqui a sua mensagem." required data-maxlength="700"></textarea>
+                    <div id="contador">0 / 700</div>
                     <br><br>
                     
                     <button type="submit" class="btn btn-success">Enviar Mensagem</button>
@@ -226,7 +246,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="js/main-script.js"></script>
         <script src="js/scripts.js"></script>
+        <script>
+        document.querySelectorAll('textarea[data-maxlength]').forEach(textarea => {
+  // Pega o limite definido no HTML
+  const limite = parseInt(textarea.getAttribute('data-maxlength'), 10);
+  const contador = textarea.nextElementSibling; // Assume que o contador está logo abaixo
 
+  textarea.addEventListener('input', () => {
+    // Corta o texto caso ultrapasse o limite
+    if (textarea.value.length > limite) {
+      textarea.value = textarea.value.substring(0, limite);
+    }
+    
+    // Atualiza o texto do contador
+    if (contador) {
+      contador.textContent = `${textarea.value.length} / ${limite}`;
+    }
+  });
+});
+        </script>
         <?php echo $alert_script; ?>
     </body>
 </html>
