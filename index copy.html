@@ -82,7 +82,7 @@
         }
         body
         {
-            font-family: var(--Roboto);
+            /*font-family: var(--Roboto);*/
         }
         .faq-container 
 {
@@ -180,8 +180,52 @@ main
     display: flex;
     flex-direction: column;
 }
+#btn-topo {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 999;
+    padding: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    background-color: var(--verdeescuro);
+    color: white;
+}
+
+.oculto 
+{
+    opacity: 0;
+    pointer-events: none; /* Evita cliques quando invisível */
+}
+
+/*Animações de elementos surgindo*/
+/* 1. Defina o roteiro da animação */
+@keyframes surgir 
+{
+  from 
+  {
+    opacity: 0;/* Começa invisível */
+  }
+  to 
+  {
+    opacity: 1;/* Fica totalmente visível */
+  }
+}
+
+/* 2. Aplique a animação ao elemento */
+#nosso_proposito, #historia, #FAQ
+{
+  animation: surgir linear forwards;
+  /* Vincula a animação à visibilidade do elemento na tela */
+  animation-timeline: view(); 
+  /* Define que a animação deve acontecer quando o elemento entra no terço inferior da tela */
+  animation-range: entry 0% cover 30%;
+}
+
     </style>
     <body>
+    <button id="btn-topo" class="oculto">↑</button>
         <header>
       <!-- place navbar here -->
       <nav class="navbar">
@@ -198,11 +242,11 @@ main
             </div>
         <ul class="nav-links fs-3">
             <li><a href="" class="fw-bold text-decoration-underline">Início</a></li>
-            <li><a href="nosso_projeto.html">Nosso Projeto</a></li>
-            <li><a href="historia.html">História</a></li>
-            <li><a href="proposito.html">Propósito</a></li>
+            <li><a href="#nosso_projeto">Nosso Projeto</a></li>
+            <li><a href="#historia">História</a></li>
+            <li><a href="#nosso_proposito">Propósito</a></li>
+            <li><a href="#FAQ">Dúvidas</a></li>
             <li><a href="contato.php">Contato</a></li>
-            <li><a href="FAQ.html">Dúvidas</a></li>
             <!-- <li><a href="News.php">Newsletter</a></li> -->
             <li><a href="login.php">Entre</a></li>
         </ul>
@@ -222,7 +266,7 @@ main
             <!-- <label for="">Tema</label> -->
             <!-- <input type="checkbox" name="" id="tema"> -->
             <br>
-            <section id="projeto">
+            <section id="nosso_projeto">
                 <h1 class="text-center fw-bold">Sobre o nosso projeto </h1>
                  <p class="text-center container" id="nossoprojeto">Nosso projeto é sobre uma pulseira inteligente capaz de monitorar os sinais vitais do paciente com um aplicativo que relata o diagnóstico dele para os profissionais de saúde com antecedência e, se houver alguma instabilidade, alerta todos os responsáveis técnicos do setor. O app será apenas disponibilizado para as empresas hospitalares (públicas) sobre um contrato, e será instalado pelos técnicos enviados pela empresa para instalar o programa em todo sistema do hospital. Assim conectando o sistema de banco de dados do hospital ao aplicativo para evitar, ao máximo, falhas de atraso ou extravio de dados sobre os pacientes, esse app terá um alarme e monitoramento de pacientes e, quando há alguma ocorrência, o app congela em uma tela de emergência e só retornará automaticamente ao seu modo tradicional quando o paciente for estabilizado.</p>
              </section>
@@ -231,7 +275,7 @@ main
                  <img src="img/Print_1.png" class="img-fluid rounded img-thumbnail shadow" alt="imagem da tela do nosso aplicativo." height="400px" width="430px">
                  <img src="img/Print_2.png" class="img-fluid rounded img-thumbnail shadow" alt="imagem da tela do nosso aplicativo." height="400px" width="430px">
              </section>
-            <section id="projeto">
+            <section id="historia">
                 <h1 class="text-center m-4">A Nossa História</h1>   
                  <p class="text-center container" id="nossoprojeto">A principal motivação inicial por trás do nosso projeto de TCC para a Escola Técnica Estadual Lauro Gomes foi o aprimoramento de qualidade dos atendimentos médicos no Brasil, especialmente em hospitais públicos.</p>
              </section>
@@ -239,7 +283,7 @@ main
                  <img src="img/hospital.jpg" class="img-fluid rounded img-thumbnail shadow" alt="Imagem de um hospital genérico" height="300px" width="300px">
                  <img src="img/etec-sao-bernardo.jpg" class="img-fluid rounded img-thumbnail shadow" alt="Imagem da entrada da escola técnica estadual lauro gomes" height="300px" width="500px">
             </section>
-            <section id="projeto">
+            <section id="nosso_proposito">
                     <h1 class="text-center m-4">O Nosso Propósito</h1>   
                      <p class="text-center container" id="nossoprojeto">Nosso principal propósito é contruibuir com as ODS a fim de tornar o mundo um logar melhor, transformar os hospitais públicos com tecnologia custo-benefício e aplicações reais em momentos requeridos.</p>
                  </section>
@@ -250,7 +294,7 @@ main
                    
             </section>
             <br><br><br><br><br><br><br>
-            <section class="faq-container">
+            <section class="faq-container" id="FAQ">
                 <h2>Dúvidas Frequentes</h2>
                 <!-- <p class="faq-subtitle">Se não encontrar o que procura, entre em contato conosco.</p> -->
 
@@ -313,5 +357,26 @@ main
         </footer>
         <script src="js/main-script.js"></script>
         <script src="js/scripts.js"></script>
+        <script>
+            const btnTopo = document.getElementById("btn-topo");
+
+// Mostra o botão ao rolar a página para baixo
+window.addEventListener("scroll", function() {
+    if (window.scrollY > 300) {
+        btnTopo.classList.remove("oculto");
+    } else {
+        btnTopo.classList.add("oculto");
+    }
+});
+
+// Volta ao topo suavemente ao clicar
+btnTopo.addEventListener("click", function() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
+
+        </script>
     </body>
 </html>
