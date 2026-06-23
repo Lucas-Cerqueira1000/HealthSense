@@ -199,16 +199,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                     </label>
                 </div>
                 <ul class="nav-links fs-3">
-                    <li><a href="index.html">Início</a></li>
+                    <li><a href="index.html" id="inicio">Início</a></li>
                     <!-- <li><a href="nosso_projeto.html">Nosso Projeto</a></li>
-                    <li><a href="">História</a></li>
-                    <li><a href="proposito.html">Propósito  </a></li> -->
-                    <li><a href="contato.php" class="botoes fw-bold text-decoration-underline">Contato</a></li>
+                    <li><a href="historia.html">História</a></li>
+                    <li><a href="proposito.html">Propósito</a></li> -->
+                    <li><a href="contato.php" class="botoes fw-bold text-decoration-underline" id="contato1">Contato</a></li>
                     <!-- <li><a href="FAQ.html">Dúvidas</a></li> -->
                     <!-- <li><a href="News.php">Newsletter</a></li> -->
-                    <li><a href="login.php" class="botoes" disable>Entre</a></li>
+                    <li><a href="login.php" class=" botoes" id="entre" >Entre</a></li>
                 </ul>
-
                 <div class="menu-toggle" id="mobile-menu">
                     <span class="bar"></span>
                     <span class="bar"></span>

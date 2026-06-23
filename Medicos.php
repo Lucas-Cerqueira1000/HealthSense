@@ -53,7 +53,7 @@
             </div>
         <ul class="nav-links fs-3">
             <li><a href="inicio.php">Início</a></li>
-            <li><a href="SeusDados.php">Seus dados</a></li>
+            <!-- <li><a href="SeusDados.php">Seus dados</a></li> -->
             <li><a href="Medicos.php" class="fw-bold text-decoration-underline">Médicos</a></li>
             <li><a href="CadastrarMedicos">Cadastrar Médicos</a></li>
             <li><a href="DeletarMedicos.php">Deletar Médicos</a></li>

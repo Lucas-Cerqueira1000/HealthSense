@@ -20,26 +20,31 @@
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
             
-            .estilo-label {
+            .estilo-label 
+            {
                 color: white;
                 font-weight: bold;
             }
-            body {
+            body 
+            {
                 display: flex;
                 flex-direction: column;
                 min-height: 100vh;
                 background-color: var(--bege);
                 font-family: Comfortaa;
             }
-            main {
+            main 
+            {
                 font-size: large;
             }
-            #for {
+            #for 
+            {
                 background-color: var(--verde);
                 color: white;
                 border-radius: 20px;
             }
-            footer {
+            footer 
+            {
                 background-color: var(--verde);
             }
         </style>
@@ -59,15 +64,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
     $cidade = mysqli_real_escape_string($con, $_POST['cidade']);
     $bairro = mysqli_real_escape_string($con, $_POST['bairro']);
     $estado = mysqli_real_escape_string($con, $_POST['estado']);
-    
+    $cnes = mysqli_real_escape_string($con, $_POST['CNES']);
     // CORREÇÃO 1: Pegando a variável correta vinda do POST ($_POST['senha'])
     // CORREÇÃO 2: Não use mysqli_real_escape_string aqui para não corromper os caracteres especiais do hash
     $senhaCrua = $_POST['senha']; 
     $senha = password_hash($senhaCrua, PASSWORD_DEFAULT);            
 
     // Query de inserção
-    $query = "INSERT INTO tabHospitais(email, nome, telefone, cep, rua, cidade, bairro, estado, senha) 
-              VALUES ('$email', '$nome', '$telefone', '$cep', '$rua', '$cidade', '$bairro', '$estado', '$senha')";
+    $query = "INSERT INTO tabHospitais(email, nome, telefone, cep, rua, cidade, bairro, estado, cnes, senha) 
+              VALUES ('$email', '$nome', '$telefone', '$cep', '$rua', '$cidade', '$bairro', '$estado', '$cnes', '$senha')";
 
     $result = mysqli_query($con, $query);
 
@@ -98,6 +103,48 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
     }
 }
 ?>
+<?php 
+    // Validação do registro CNES
+    function validarEstruturaCNES($cnes) 
+{
+    // Remove caracteres não numéricos
+    $cnes = preg_replace('/[^0-9]/', '', $cnes);
+    
+    // CNES deve ter exatamente 7 dígitos
+    if (strlen($cnes) != 7) {
+        return false;
+    }
+
+    // Algoritmo de Módulo 11 (adaptado para os 7 dígitos do CNES)
+    $peso = [6, 5, 4, 3, 2, 9, 8];
+    $soma = 0;
+
+    for ($i = 0; $i < 6; $i++) {
+        $soma += (int)$cnes[$i] * $peso[$i];
+    }
+
+    $resto = $soma % 11;
+    $digitoCalculado = ($resto < 2) ? 0 : (11 - $resto);
+
+    // O último dígito deve ser igual ao dígito calculado
+    return (int)$cnes[6] === $digitoCalculado;
+}
+    // Exemplo básico de busca de dados do CNES via cURL
+$numero_cnes = "S_POST['CNES']"; // Substitua pelo CNES que você quer validar
+
+// URL pública de consulta (Adapte conforme o endpoint de dados abertos se disponível)
+$url = "https://cnes.datasus.gov.br/"; 
+
+// Configuração do cURL
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+// ... Adicione cabeçalhos HTTP e parâmetros de busca conforme a requisição ...
+$response = curl_exec($ch);
+curl_close($ch);
+
+// Aqui você filtra a $response para saber se o CNES existe na página retornada
+?>
         <header>
             <nav class="navbar">
                 <div class="overlay"></div>
@@ -112,14 +159,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                     </label>
                 </div>
                 <ul class="nav-links fs-3">
-                    <li><a href="index.html">Início</a></li>
+                    <li><a href="index.html" id="inicio">Início</a></li>
                     <!-- <li><a href="nosso_projeto.html">Nosso Projeto</a></li>
                     <li><a href="historia.html">História</a></li>
                     <li><a href="proposito.html">Propósito</a></li> -->
-                    <li><a href="contato.php" class="botoes">Contato</a></li>
+                    <li><a href="contato.php" class="botoes" id="contato1">Contato</a></li>
                     <!-- <li><a href="FAQ.html">Dúvidas</a></li> -->
                     <!-- <li><a href="News.php">Newsletter</a></li> -->
-                    <li><a href="login.php" class="fw-bold text-decoration-underline botoes">Entre</a></li>
+                    <li><a href="login.php" class="fw-bold text-decoration-underline botoes" id="entre" >Entre</a></li>
                 </ul>
                 <div class="menu-toggle" id="mobile-menu">
                     <span class="bar"></span>
@@ -182,6 +229,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                                     <div class="mb-3">
                                         <label for="txtEstado" class="form-label estilo-label">Estado:</label>
                                         <input type="text" class="form-control" id="txtEstado" name="estado" readonly placeholder="Preenchimento automático">
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="txtEstado" class="form-label estilo-label">Registro CNES(Cadastro Nacional de Estabelecimentos de Saúde):</label>
+                                        <input type="text" class="form-control" id="txtCNES" name="CNES" placeholder="" maxlength="7" required>
+                                        <div id="CNESretorno" class="form-text text-warning fw-bold" style="display:none;">Registro inexistente.</div>
                                     </div>
 
                                     <div class="mb-3">

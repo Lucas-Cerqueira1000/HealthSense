@@ -249,7 +249,21 @@ main
     background-color: var(--verdeescuro);
     color: white;
 }
-
+#texto
+{
+    position: fixed;
+    display: none;
+    /* bottom: 40px; */
+    right: 100px;
+    /* z-index: 999; */
+    top: 1215px;
+    /* padding: 25px; */
+    /* border-radius: 50rem; */
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+}
 .oculto 
 {
     opacity: 0;
@@ -322,8 +336,14 @@ modal-viewer
         position: static; /* Volta ao fluxo normal da página */
     }
 }
+html
+    {
+        scroll-behavior: smooth;
+    }
+
     </style>
     <body>
+        <p id="texto">Voltar ao topo.</p>
     <button id="btn-topo" class="oculto">↑</button>
         <header>
       <!-- place navbar here -->
@@ -340,14 +360,14 @@ modal-viewer
                 </label>
             </div>
         <ul class="nav-links fs-3">
-            <li><a href="" class="fw-bold text-decoration-underline">Início</a></li>
+            <li><a href="" class="fw-bold text-decoration-underline links" id="inicio">Início</a></li>
             <!-- <li><a href="#nosso_projeto">Nosso Projeto</a></li>
             <li><a href="#historia">História</a></li>
             <li><a href="#nosso_proposito">Propósito</a></li>
             <li><a href="#FAQ">Dúvidas</a></li> -->
-            <li><a href="contato.php" class="botoes">Contato</a></li>
+            <li><a href="contato.php" class="botoes links" id="contato1">Contato</a></li>
             <!-- <li><a href="News.php">Newsletter</a></li> -->
-            <li><a href="login.php" class="botoes">Entre</a></li>
+            <li><a href="login.php" class="botoes links" id="entre">Entre</a></li>
         </ul>
         
 
@@ -373,6 +393,7 @@ modal-viewer
             <section id="prints" class="text-center container">
                  <img src="img/Print_1.png" class="img-fluid rounded img-thumbnail shadow" alt="imagem da tela do nosso aplicativo." height="400px" width="430px">
                  <img src="img/Print_2.png" class="img-fluid rounded img-thumbnail shadow" alt="imagem da tela do nosso aplicativo." height="400px" width="430px">
+                 <img src="img/Print_3.png" class="img-fluid rounded img-thumbnail shadow" alt="imagem da tela do nosso aplicativo." height="400px" width="430px">
             </section>
             <section id="historia">
                 <h1 class="text-center m-4">A Nossa História</h1>   
@@ -486,13 +507,13 @@ modal-viewer
               <h3 class="text-center container" id="copy">&copy HealthSense Systems</h3>
                 <section id="redes" class="text-center container">
                     <a href="https://x.com/?lang=pt" target="_blank">    
-                        <img src="img/X.png" class="img-fluid shadow" alt="imagem da ods(Objetivos de desenvolvimento sustentaveis) 3 - saúde e bem-estar" height="60px" width="150px" id="x">
+                        <img src="img/X.png" class="img-fluid shadow" alt="imagem da ods(Objetivos de desenvolvimento sustentaveis) 3 - saúde e bem-estar" height="60px" width="70px" id="x">
                     </a>
                     <a href="https://www.instagram.com/" target="_blank">
-                        <img src="img/Instagram.png" class="img-fluid shadow" alt="imagem da ods(Objetivos de desenvolvimento sustentaveis) 9 - Indústria, inovação e infraestruturas" height="40px" width="150px" id="instagram">
+                        <img src="img/Instagram.png" class="img-fluid shadow" alt="imagem da ods(Objetivos de desenvolvimento sustentaveis) 9 - Indústria, inovação e infraestruturas" height="40px" width="70px" id="instagram">
                     </a>
                     <a href="https://www.facebook.com/?locale=pt_BR" target="_blank">
-                        <img src="img/Facebook.png" class="img-fluid shadow" alt="imagem da ods(Objetivos de desenvolvimento sustentaveis) 10 - reduzir as desigualdades" height="40px" width="150px" id="facebook">
+                        <img src="img/Facebook.png" class="img-fluid shadow" alt="imagem da ods(Objetivos de desenvolvimento sustentaveis) 10 - reduzir as desigualdades" height="40px" width="70px" id="facebook">
                     </a>
             </section>
              </div>

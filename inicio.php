@@ -1,7 +1,24 @@
+<?php 
+            $host = 'tcc_bd35.mysql.dbaas.com.br';
+            $dbname = 'tcc_bd35';
+            $username = 'tcc_bd35';
+            $password = 'ROSA123456a#';
+
+            try 
+            {
+                $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
+                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            }   catch (PDOException $e) 
+            {
+                echo "Erro na conexão: " . $e->getMessage();
+            }
+        
+
+        ?>
 <!doctype html>
 <html lang="pt-br">
     <head>
-        <title>Inicio</title>
+        <title>Seus Dados</title>
         <!-- Required meta tags -->
         <meta charset="utf-8" />
         <meta
@@ -52,15 +69,14 @@
                 </label>
             </div>
         <ul class="nav-links fs-3">
-            <li><a href="inicio.php" class="fw-bold text-decoration-underline">Início</a></li>
-            <li><a href="SeusDados.php">Seus dados</a></li>
+            <li><a href="inicio.php" >Início</a></li>
+            <!-- <li><a href="SeusDados.php" class="fw-bold text-decoration-underline">Seus dados</a></li> -->
             <li><a href="Medicos.php">Médicos</a></li>
             <li><a href="CadastrarMedicos">Cadastrar Médicos</a></li>
             <li><a href="DeletarMedicos.php">Deletar Médicos</a></li>
             <li><a href="AlterarDadosMedicos.php">Alterar Dados Médicos</a></li>
             <a href="Index.html">Deslogar</a>
         </ul>
-        
 
         <div class="menu-toggle bg-" id="mobile-menu">
             <span class="bar"></span>
@@ -71,11 +87,6 @@
         </header>
         <main class="flex flex-col min-h-screen vw-100 p-0">
            
-        <h1>
-            <script>
-                
-            </script>
-        </h1>
             
         </main>
         <footer class="mt-auto container-fluid vw-100 text-center">
