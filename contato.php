@@ -121,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         {
             background-color: var(--verdeescuro);
             width: 600px;
-            height: 180px;
+            height: 130px;
             resize: none;
             border-radius: 5px;
             font-size: 20px;
@@ -132,7 +132,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         {
             background-color: var(--verdeescuro);
             width: 600px;
-            height: 200px;
+            height: 100px;
             resize: none;
             border-radius: 5px;
             font-size: 20px;
@@ -143,7 +143,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         {
             background-color: var(--verdeescuro);
             width: 600px;
-            height: 400px;
+            height: 370px;
             resize: none;
             border-radius: 5px;
             font-size: 20px;
@@ -192,7 +192,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                     <img src="img/Logo.png" alt="" class="img-fluid ms-5" width="190px" height="150px" id="logo1">
                 </div>
                 <div class="theme-switch-wrapper">
-                    <span id="mode-label" class="fw-bold text-white">Modo Escuro</span>
+                    <span id="mode-label" class="fw-bold text-white">Trocar Tema</span>
                     <label class="theme-switch" for="checkbox">
                         <input type="checkbox" id="checkbox" />
                         <div class="slider round"></div>
@@ -200,13 +200,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                 </div>
                 <ul class="nav-links fs-3">
                     <li><a href="index.html">Início</a></li>
-                    <li><a href="nosso_projeto.html">Nosso Projeto</a></li>
+                    <!-- <li><a href="nosso_projeto.html">Nosso Projeto</a></li>
                     <li><a href="">História</a></li>
-                    <li><a href="proposito.html">Propósito  </a></li>
-                    <li><a href="contato.php" class="fw-bold text-decoration-underline">Contato</a></li>
-                    <li><a href="FAQ.html">Dúvidas</a></li>
+                    <li><a href="proposito.html">Propósito  </a></li> -->
+                    <li><a href="contato.php" class="botoes fw-bold text-decoration-underline">Contato</a></li>
+                    <!-- <li><a href="FAQ.html">Dúvidas</a></li> -->
                     <!-- <li><a href="News.php">Newsletter</a></li> -->
-                    <li><a href="login.php">Entre</a></li>
+                    <li><a href="login.php" class="botoes" disable>Entre</a></li>
                 </ul>
 
                 <div class="menu-toggle" id="mobile-menu">
@@ -231,8 +231,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                 <form action="contato.php" method="POST">
                     <label id="lbl">Nome:</label>
                     <br>
-                    <textarea name="nome" id="nome" placeholder="Digite aqui o seu nome completo." required maxlength="150" data-maxlength="200" rows="5"></textarea>
-                    <div id="contador">0 / 150</div>
+                    <textarea name="nome" id="nome" placeholder="Digite aqui o seu nome completo." required maxlength="200" data-maxlength="200" rows="5"></textarea>
+                    <div id="contador">0 / 200</div>
                     <br>
                     <label id="lbl">E-mail:</label>
                     <br>
@@ -241,8 +241,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                     <br>
                     <label id="lbl">Assunto:</label>
                     <br>
-                    <textarea name="assunto" id="assunto" placeholder="Digite aqui o assunto da mensagem." required data-maxlength="305"></textarea>
-                    <div id="contador">0 / 305</div>
+                    <textarea name="assunto" id="assunto" placeholder="Digite aqui o assunto da mensagem." required data-maxlength="200"></textarea>
+                    <div id="contador">0 / 200</div>
                     <br>
                     <label id="lbl">Mensagem:</label>
                     <br>

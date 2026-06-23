@@ -105,7 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                     <img src="img/Logo.png" alt="" class="img-fluid ms-5" width="190px" height="150px" id="logo1">
                 </div>
                 <div class="theme-switch-wrapper">
-                    <span id="mode-label" class="fw-bold text-white">Modo Escuro</span>
+                    <span id="mode-label" class="fw-bold text-white">Trocar Tema</span>
                     <label class="theme-switch" for="checkbox">
                         <input type="checkbox" id="checkbox" />
                         <div class="slider round"></div>
@@ -113,13 +113,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                 </div>
                 <ul class="nav-links fs-3">
                     <li><a href="index.html">Início</a></li>
-                    <li><a href="nosso_projeto.html">Nosso Projeto</a></li>
+                    <!-- <li><a href="nosso_projeto.html">Nosso Projeto</a></li>
                     <li><a href="historia.html">História</a></li>
-                    <li><a href="proposito.html">Propósito</a></li>
-                    <li><a href="contato.php">Contato</a></li>
-                    <li><a href="FAQ.html">Dúvidas</a></li>
+                    <li><a href="proposito.html">Propósito</a></li> -->
+                    <li><a href="contato.php" class="botoes">Contato</a></li>
+                    <!-- <li><a href="FAQ.html">Dúvidas</a></li> -->
                     <!-- <li><a href="News.php">Newsletter</a></li> -->
-                    <li><a href="login.php" class="fw-bold text-decoration-underline">Entre</a></li>
+                    <li><a href="login.php" class="fw-bold text-decoration-underline botoes">Entre</a></li>
                 </ul>
                 <div class="menu-toggle" id="mobile-menu">
                     <span class="bar"></span>
@@ -192,7 +192,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                                     <div class="mb-3">
                                         <label for="txtConfirmSenha" class="form-label estilo-label">Confirmar Senha:</label>
                                         <input type="password" class="form-control classe-senha" id="txtConfirmSenha" name="comfsenha" minlength="8" placeholder="Mínimo de 8 caracteres" required>
-                                        <div id="senhaFeedback" class="form-text text-warning fw-bold" style="display:none;">As senhas não batem ou possuem menos de 8 caracteres.</div>
+                                        <div id="senhaFeedback" class="form-text text-warning fw-bold" style="display:none;">As senhas não são iguais.</div>
                                     </div>
                                     
                                     <div class="mb-3 form-check"> 

@@ -8,6 +8,8 @@
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
+        <!-- Link AJAX -->
+        <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js"></script>
         <!-- Link Tailwind -->
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
         <!-- <script src="../Tailwind/Tailwind.txt"></script> -->
@@ -36,7 +38,293 @@
              <link rel="stylesheet" href="src/main-style.css">
              <!-- <link rel="stylesheet" href="src/estilos.css"> -->
     </head>
+    <style>
+        :root
+        {
+            --Roboto:(@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap'));
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+        #nossoprojeto
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 20px;
+            background-color: var(--verde);
+            padding: 40px;
+            color: white;
+            border-radius: 40px;
+            margin: 20px auto;
+            max-width: 90%;
+        }
+
+        #prints
+        {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            border-radius: 150px;
+        }
+        #redes
+        {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        #x, #facebook, #instagram
+        {
+            border-radius: 100px;
+        }
+        @media(max-width: 1000px)
+        {
+            #prints
+            {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            /* Removidos os offsets 'top' que causavam o espaço em branco */
+            footer, main 
+            {
+                top: 0;
+            }
+        }
+        body
+        {
+            /*font-family: var(--Roboto);*/
+        }
+.faq-container 
+{
+    max-width: 800px; /* Largura máxima confortável para leitura */
+    width: 90%; /* Responsivo para telas menores */
+    background: var(--verde);
+    padding: 30px;
+    display: flex;
+    flex-direction: column; /* Título em cima, perguntas embaixo */
+    margin: 40px auto; /* O 'auto' centraliza o bloco horizontalmente na tela */
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+/* Eliminados os scalings que destruíam a legibilidade no celular */
+@media(max-width: 640px) {
+    .faq-container {
+        padding: 15px; /* Apenas reduz o espaçamento interno para caber mais conteúdo */
+    }
+    .faq-question {
+        font-size: 0.95rem; /* Ajuste suave no tamanho da fonte */
+    }
+}
+.faq-item[open] .faq-answer {
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@media(max-width: 640px)
+{
+    .faq-container
+    {
+        transform: scale(0.7);
+    }
+}
+@media(max-width: 455px)
+{
+    .faq-container
+    {
+        transform: scale(0.6);
+    }
+}
+@media(max-width: 390px)
+{
+    .faq-container
+    {
+        transform: scale(0.5);
+    }
+}
+h2 {
+    text-align: center;
+    color: white;
+    margin-bottom: 8px;
+}
+
+.faq-subtitle {
+    text-align: center;
+    color: #ffffff;
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+}
+
+/* Estilização do Details (Cada pergunta) */
+.faq-item {
+    border: 1px solid var(--bege);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    transition: all 0.8s ease;
+}
+
+/* Quando o item estiver aberto, muda a cor da borda */
+.faq-item[open] {
+    border-color: var(--bege);
+    box-shadow: 0 2px 8px rgba(79, 70, 229, 0.1);
+}
+
+/* Estilização da Pergunta (Summary) */
+.faq-question {
+    padding: 16px;
+    color: white;
+    font-weight: 600;
+    transition: 3s ease;
+    cursor: pointer;
+    border: white;
+    list-style: none; /* Esconde a seta padrão no Chrome/Firefox */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--verdeescuro);
+    user-select: none;
+}
+
+/* Esconde a seta padrão no Safari */
+.faq-question::-webkit-details-marker {
+    display: none;
+}
+
+/* Adicionando um ícone customizado de "+" usando pseudo-elemento */
+.faq-question::after {
+    content: '+';
+    font-size:  2.2rem;
+    color: #ffffff;
+    transition: transform 0.5s ease;
+}
+
+/* Gira o "+" para virar um "×" ou indica abertura quando expandido */
+.faq-item[open] .faq-question::after {
+    transform: rotate(135deg);
+    color: #ffffff;
+    border: var(--bege);
+}
+
+/* Estilização da Resposta */
+.faq-answer {
+    padding: 0 16px 16px 16px;
+    background-color: var(--verdeescuro);
+    color: white;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    border-top: 1px solid var(--bege);
+}
+/* .faq-container
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+} */
+body
+{
+    display: flex;
+    /* flex-direction: ; */
+}
+main
+{
+    display: flex;
+    flex-direction: column;
+}
+#btn-topo {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 999;
+    padding: 25px;
+    border-radius: 50rem;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    background-color: var(--verdeescuro);
+    color: white;
+}
+
+.oculto 
+{
+    opacity: 0;
+    pointer-events: none; /* Evita cliques quando invisível */
+}
+
+/*Animações de elementos surgindo*/
+/* 1. Defina o roteiro da animação garantindo a invisibilidade no início */
+@keyframes surgir 
+{
+  0% 
+  {
+    opacity: 0;
+    transform: translateY(50px); /* Opcional: dá um efeito sutil de subir enquanto surge */
+  }
+  100% 
+  {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 2. Aplique a animação aos elementos */
+#nosso_proposito, #historia, #FAQ
+{
+  opacity: 0; 
+  animation: surgir ease-out forwards;
+  animation-timeline: view(); 
+  /* Começa logo que brota 10% na tela e finaliza com mais suavidade ao avançar */
+  animation-range: entry 10% cover 40%;
+}
+modal-viewer
+{
+    width: 100%;
+    height: 800px;
+    background-color: var(--verde);
+}
+#modelo
+{
+    background-color: var(--verde);
+    border-radius: 40px;
+    width: 700px;
+    height: 550px;
+    cursor: pointer;
+}
+#produto
+{
+    width: 700px;
+    height: 500px;
+    cursor: pointer;
+}
+/* Responsividade correta para o modelo 3D sem quebrar o layout */
+@media(max-width: 720px) {
+    #modelo, #produto {
+        width: 90%;
+        height: 400px;
+    }
+}
+@media(max-width: 520px) {
+    #modelo, #produto {
+        height: 300px;
+    }
+}
+/* Removemos as reduções por scale e posicionamentos relativos que geravam o buraco */
+@media(max-width: 420px) {
+    #modelo, #produto {
+        height: 250px;
+    }
+    #FAQ, .faq-container {
+        position: static; /* Volta ao fluxo normal da página */
+    }
+}
+    </style>
     <body>
+    <button id="btn-topo" class="oculto">↑</button>
         <header>
       <!-- place navbar here -->
       <nav class="navbar">
@@ -45,7 +333,7 @@
             <img src="img/Logo.png" alt="" class="img-fluid ms-5" width="190px" height="150px" id="logo1">
         </div>
         <div class="theme-switch-wrapper">
-                <span id="mode-label" class="fw-bold text-white">Modo Escuro</span>
+                <span id="mode-label" class="fw-bold text-white">Trocar Tema</span>
                 <label class="theme-switch" for="checkbox">
                     <input type="checkbox" id="checkbox" />
                     <div class="slider round"></div>
@@ -53,13 +341,13 @@
             </div>
         <ul class="nav-links fs-3">
             <li><a href="" class="fw-bold text-decoration-underline">Início</a></li>
-            <li><a href="nosso_projeto.html">Nosso Projeto</a></li>
-            <li><a href="historia.html">História</a></li>
-            <li><a href="proposito.html">Propósito</a></li>
-            <li><a href="contato.php">Contato</a></li>
-            <li><a href="FAQ.html">Dúvidas</a></li>
+            <!-- <li><a href="#nosso_projeto">Nosso Projeto</a></li>
+            <li><a href="#historia">História</a></li>
+            <li><a href="#nosso_proposito">Propósito</a></li>
+            <li><a href="#FAQ">Dúvidas</a></li> -->
+            <li><a href="contato.php" class="botoes">Contato</a></li>
             <!-- <li><a href="News.php">Newsletter</a></li> -->
-            <li><a href="login.php">Entre</a></li>
+            <li><a href="login.php" class="botoes">Entre</a></li>
         </ul>
         
 
@@ -73,20 +361,165 @@
         <main class="flex flex-col min-h-screen vw-100 p-0">
             <!-- <h1>Corpo</h1> -->
             <br>
-            <img src="img/HealthSense-removebg-preview.png" class="img-fluid rounded mx-auto d-block " alt="logo do health sense" srcset="" height="400px" width="400px" class="container" id="logo">
+            <img src="img/teste7.png" class="img-fluid rounded mx-auto d-block " alt="logo do health sense" srcset="" height="400px" width="400px" class="container" id="logo">
             <!-- <label for="">Tema</label> -->
             <!-- <input type="checkbox" name="" id="tema"> -->
             <br>
-            
+            <section id="nosso_projeto">
+                <h1 class="text-center fw-bold">Sobre o nosso projeto </h1>
+                 <p class="text-center container" id="nossoprojeto">Nosso projeto é sobre uma pulseira inteligente capaz de monitorar os sinais vitais do paciente com um aplicativo que relata o diagnóstico dele para os profissionais de saúde com antecedência e, se houver alguma instabilidade, alerta todos os responsáveis técnicos do setor. O app será apenas disponibilizado para as empresas hospitalares (públicas) sobre um contrato, e será instalado pelos técnicos enviados pela empresa para instalar o programa em todo sistema do hospital. Assim conectando o sistema de banco de dados do hospital ao aplicativo para evitar, ao máximo, falhas de atraso ou extravio de dados sobre os pacientes, esse app terá um alarme e monitoramento de pacientes e, quando há alguma ocorrência, o app congela em uma tela de emergência e só retornará automaticamente ao seu modo tradicional quando o paciente for estabilizado.</p>
+            </section>
+             <h1 class="text-center fw-bold">Prints do nosso APP:</h1>
+            <section id="prints" class="text-center container">
+                 <img src="img/Print_1.png" class="img-fluid rounded img-thumbnail shadow" alt="imagem da tela do nosso aplicativo." height="400px" width="430px">
+                 <img src="img/Print_2.png" class="img-fluid rounded img-thumbnail shadow" alt="imagem da tela do nosso aplicativo." height="400px" width="430px">
+            </section>
+            <section id="historia">
+                <h1 class="text-center m-4">A Nossa História</h1>   
+                 <p class="text-center container" id="nossoprojeto">A principal motivação inicial por trás do nosso projeto de TCC para a Escola Técnica Estadual Lauro Gomes foi o aprimoramento de qualidade dos atendimentos médicos no Brasil, especialmente em hospitais públicos.</p>
+            </section>
+            <section id="prints" class="text-center container">
+                 <img src="img/hospital.jpg" class="img-fluid rounded img-thumbnail shadow" alt="Imagem de um hospital genérico" height="300px" width="300px">
+                 <img src="img/etec-sao-bernardo.jpg" class="img-fluid rounded img-thumbnail shadow" alt="Imagem da entrada da escola técnica estadual lauro gomes" height="300px" width="500px">
+            </section>
+            <section id="nosso_proposito">
+                    <h1 class="text-center m-4">O Nosso Propósito</h1>   
+                     <p class="text-center container" id="nossoprojeto">Nosso principal propósito é contruibuir com as ODS a fim de tornar o mundo um logar melhor, transformar os hospitais públicos com tecnologia custo-benefício e aplicações reais em momentos requeridos.</p>
+            </section>
+            <section id="prints" class="text-center container">
+                     <img src="img/ods3.webp" class="img-fluid rounded img-thumbnail shadow" alt="imagem da ods(Objetivos de desenvolvimento sustentaveis) 3 - saúde e bem-estar" height="300px" width="300px">
+                     <img src="img/ods9.webp" class="img-fluid rounded img-thumbnail shadow" alt="imagem da ods(Objetivos de desenvolvimento sustentaveis) 9 - Indústria, inovação e infraestruturas" height="300px" width="300px">
+                     <img src="img/ods10.webp" class="img-fluid rounded img-thumbnail shadow" alt="imagem da ods(Objetivos de desenvolvimento sustentaveis) 10 - reduzir as desigualdades" height="300px" width="300px">
+                   
+            </section>
+            <br><br>
+                <section id="equipe">
+                    <h1 class="text-center m-4">Nossa Equipe</h1>   
+                    <p class="text-center container" id="nossoprojeto">Para desenvolver esse projeto foi necessário o apoio de muitas pessoas, das quais, a equipe principal do projeto "Health Sense".</p>
+                 </section>
+                  <section id="prints" class="text-center container">
+                    <figure>
+                        <img src="img/ods3.webp" class="img-fluid rounded img-thumbnail shadow" alt="imagem do Antonio, lider e programador Android." height="300px" width="300px">
+                        <figcaption class="fw-bold">Antonio, lider e programador Android.</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="img/ods9.webp" class="img-fluid rounded img-thumbnail shadow" alt="Branca" height="300px" width="300px">
+                        <figcaption>Branca, </figcaption>
+                    </figure>
+                    <figure>
+                        <img src="img/ods10.webp" class="img-fluid rounded img-thumbnail shadow" alt="Lucas, programador do site." height="300px" width="300px">
+                        <figcaption>Lucas, programador do site.</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="img/ods10.webp" class="img-fluid rounded img-thumbnail shadow" alt="Paulo, documentador do projeto." height="300px" width="300px">
+                        <figcaption>Paulo, documentador do projeto.</figcaption>
+                    </figure>
+            </section>
+            <h1 class="text-center fw-bold">Veja o nosso produto</h1>
+            <section id="modelo">
+                <model-viewer 
+                src="Meshy_AI_Pulse_Ring_0616152056_texture.glb" 
+                alt="Uma descrição do seu modelo 3D para acessibilidade" 
+                auto-rotate 
+                camera-controls id="produto"
+                class="text-center">
+                </model-viewer>
+            </section><br>
+            <h4 class="text-center fw-bold">Modelo 3D gerado na ferramenta "MESHY AI".</h4>
+            <section class="faq-container" id="FAQ">
+                <h2>Dúvidas Frequentes</h2>
+                <!-- <p class="faq-subtitle">Se não encontrar o que procura, entre em contato conosco.</p> -->
+
+                <details class="faq-item">
+                    <summary class="faq-question" onclick="oq()">O que é o nosso projeto?</summary>
+                    <div class="faq-answer">
+                        <br>
+                        <p>É uma pulseira que mede batimentos cardíacos a partir da corrente sanguínea.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">A que instuições ele é destinado?</summary>
+                    <div class="faq-answer">
+                        <br>
+                        <p>A instituições públicas de saúde.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">Quanto custa o produto?</summary>
+                    <div class="faq-answer">
+                        <br>
+                        <p>Nos não temos o produto finalizado, então ainda não temos um valor definido.</p>
+                    </div>
+                </details>
+
+                 <details class="faq-item">
+                    <summary class="faq-question">Existem riscos embutidos ao paciente que utilizar a pulseira?</summary>
+                    <div class="faq-answer">
+                        <br>
+                        <p> Não, em sua versão final a pulseira será totalmente anti-alergênica e atóxica.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">Como o médico utilizará a pulseira?</summary>
+                    <div class="faq-answer">
+                        <br>
+                        <p> Não, em sua versão final a pulseira será totalmente anti-alergênica e atóxica.</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">Em caso de parada cardíaca, o médico responsável pelo paciente é avisado?</summary>
+                    <div class="faq-answer">
+                        <br>
+                        <p>Sim, por meio de alertas visuais e sonoros no aplicativo.</p>
+                    </div>
+                </details>
+            </section>
+            <br><br><br><br><br>
         </main>
         <footer class="mt-auto container-fluid vw-100 text-center">
             <!-- place footer here -->
              <div class="text-center container">
               <h3 class="text-center container" id="copy">&copy HealthSense Systems</h3>
+                <section id="redes" class="text-center container">
+                    <a href="https://x.com/?lang=pt" target="_blank">    
+                        <img src="img/X.png" class="img-fluid shadow" alt="imagem da ods(Objetivos de desenvolvimento sustentaveis) 3 - saúde e bem-estar" height="60px" width="150px" id="x">
+                    </a>
+                    <a href="https://www.instagram.com/" target="_blank">
+                        <img src="img/Instagram.png" class="img-fluid shadow" alt="imagem da ods(Objetivos de desenvolvimento sustentaveis) 9 - Indústria, inovação e infraestruturas" height="40px" width="150px" id="instagram">
+                    </a>
+                    <a href="https://www.facebook.com/?locale=pt_BR" target="_blank">
+                        <img src="img/Facebook.png" class="img-fluid shadow" alt="imagem da ods(Objetivos de desenvolvimento sustentaveis) 10 - reduzir as desigualdades" height="40px" width="150px" id="facebook">
+                    </a>
+            </section>
              </div>
              
         </footer>
         <script src="js/main-script.js"></script>
         <script src="js/scripts.js"></script>
+        <script>
+            const btnTopo = document.getElementById("btn-topo");
+
+// Mostra o botão ao rolar a página para baixo
+window.addEventListener("scroll", function() {
+    if (window.scrollY > 300) {
+        btnTopo.classList.remove("oculto");
+    } else {
+        btnTopo.classList.add("oculto");
+    }
+});
+
+// Volta ao topo suavemente ao clicar
+btnTopo.addEventListener("click", function() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
+
+        </script>
     </body>
 </html>

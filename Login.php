@@ -108,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                     <img src="img/Logo.png" alt="" class="img-fluid ms-5" width="190px" height="150px" id="logo1">
                 </div>
                 <div class="theme-switch-wrapper">
-                    <span id="mode-label" class="fw-bold text-white">Modo Escuro</span>
+                    <span id="mode-label" class="fw-bold text-white">Trocar Tema</span>
                     <label class="theme-switch" for="checkbox">
                         <input type="checkbox" id="checkbox" />
                         <div class="slider round"></div>
@@ -116,13 +116,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                 </div>
                 <ul class="nav-links fs-3">
                     <li><a href="index.html">Início</a></li>
-                    <li><a href="nosso_projeto.html">Nosso Projeto</a></li>
+                    <!-- <li><a href="nosso_projeto.html">Nosso Projeto</a></li>
                     <li><a href="historia.html">História</a></li>
-                    <li><a href="proposito.html">Propósito</a></li>
-                    <li><a href="contato.php">Contato</a></li>
-                    <li><a href="FAQ.html">Dúvidas</a></li>
+                    <li><a href="proposito.html">Propósito</a></li> -->
+                    <li><a href="contato.php" class="botoes">Contato</a></li>
+                    <!-- <li><a href="FAQ.html">Dúvidas</a></li> -->
                     <!-- <li><a href="News.php">Newsletter</a></li> -->
-                    <li><a href="login.php" class="fw-bold text-decoration-underline">Entre</a></li>
+                    <li><a href="login.php" class="fw-bold text-decoration-underline botoes">Entre</a></li>
                 </ul>
                 <div class="menu-toggle" id="mobile-menu">
                     <span class="bar"></span>
@@ -137,7 +137,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                 <div class="row justify-content-center">
                     <div class="col-12 d-flex justify-content-center">
                         
-                        <div class="card" style="width: 18rem;" id="for">
+                        <div class="card" style="width: 38rem;" id="for">
                             <div class="card-body">
                                 <h5 class="card-title text-center" id="titulo">Login</h5>
                                 <hr>
@@ -154,7 +154,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                                         <input type="email" class="form-control" id="exampleInputEmail1" name="email" required>
                                     </div>
                                     
-                                    <div class="mb-3">
+                                    <div class="mb-3">  
                                         <label for="exampleInputPassword1" class="form-label" id="senha">Senha:</label>
                                         <input type="password" class="form-control" id="exampleInputPassword1" name="senha" required>
                                     </div>
