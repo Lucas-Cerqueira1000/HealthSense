@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Exemplo Scroll Suave</title>
+  <style>
+    /* Aplica o efeito suave */
+    html, body {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    /* Espaço grande para permitir a rolagem */
+    .conteudo {
+      height: 2000px;
+      padding: 20px;
+    }
+
+    /* Estilização do botão */
+    #voltar-topo {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 10px 15px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="topo">
+    <h1>Topo da Página</h1>
+  </div>
+
+  <div class="conteudo">
+    <p>Role a página para baixo e clique no botão no canto inferior direito.</p>
+  </div>
+
+  <!-- Botão que aponta para o ID do topo -->
+  <a href="#topo" id="voltar-topo">Voltar ao topo</a>
+
+</body>
+</html>

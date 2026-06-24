@@ -1,3 +1,67 @@
+<?php
+include ('Conexao.php'); // Certifique-se que este arquivo cria a variável $con
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') 
+{
+    // Coleta dos dados do formulário e escape para segurança
+    $email = mysqli_real_escape_string($con, $_POST['email']);
+    $nome = mysqli_real_escape_string($con, $_POST['nome']);
+    $telefone = mysqli_real_escape_string($con, $_POST['telefone']);
+    $cep = mysqli_real_escape_string($con, $_POST['cep']);
+    $rua = mysqli_real_escape_string($con, $_POST['rua']);
+    $cidade = mysqli_real_escape_string($con, $_POST['cidade']);
+    $bairro = mysqli_real_escape_string($con, $_POST['bairro']);
+    $estado = mysqli_real_escape_string($con, $_POST['estado']);
+    
+    // Captura o CNPJ mantendo a formatação vinda do formulário (pontos, barras e hifens)
+    $cnpj = mysqli_real_escape_string($con, $_POST['CNPJ'] ?? '');
+    
+    // Formata o CNES apenas para garantir que tenha 7 dígitos (com zeros à esquerda)
+    $cnesBruto = $_POST['CNES'] ?? '';
+    $cnesFormatado = str_pad(preg_replace('/[^0-9]/', '', $cnesBruto), 7, '0', STR_PAD_LEFT);
+    $cnes = mysqli_real_escape_string($con, $cnesFormatado);
+    
+    $senhaCrua = $_POST['senha']; 
+    $senha = password_hash($senhaCrua, PASSWORD_DEFAULT);            
+
+    // Query de inserção direta
+    $query = "INSERT INTO tabHospitais(email, nome, telefone, cep, rua, cidade, bairro, estado, cnes, cnpj, senha) 
+              VALUES ('$email', '$nome', '$telefone', '$cep', '$rua', '$cidade', '$bairro', '$estado', '$cnes', '$cnpj', '$senha')";
+
+    $result = mysqli_query($con, $query);
+
+    if ($result) {
+        echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
+        echo '<script> 
+        document.addEventListener("DOMContentLoaded", function() {
+            Swal.fire({
+                title: "Sucesso!",
+                text: "Hospital cadastrado com sucesso! Clique no botão para ser redirecionado.",
+                icon: "success",
+                confirmButtonText: "OK"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "Login.php";
+                }
+            });
+        });
+        </script>';
+        exit; 
+    } else {
+        echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
+        echo '<script> 
+        document.addEventListener("DOMContentLoaded", function() {
+            Swal.fire({
+                title: "Erro",
+                html: "Não foi possível salvar os dados no banco. Erro: ' . mysqli_error($con) . '",
+                icon: "error"
+            });
+        });
+        </script>';
+        exit;
+    }
+}
+?>
 <!doctype html>
 <html lang="pt-br">
     <head>
@@ -50,101 +114,6 @@
         </style>
     </head>
     <body>
-        <?php
-include ('Conexao.php');
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') 
-{
-    // Limpeza padrão para campos normais contra SQL Injection
-    $email = mysqli_real_escape_string($con, $_POST['email']);
-    $nome = mysqli_real_escape_string($con, $_POST['nome']);
-    $telefone = mysqli_real_escape_string($con, $_POST['telefone']);
-    $cep = mysqli_real_escape_string($con, $_POST['cep']);
-    $rua = mysqli_real_escape_string($con, $_POST['rua']);
-    $cidade = mysqli_real_escape_string($con, $_POST['cidade']);
-    $bairro = mysqli_real_escape_string($con, $_POST['bairro']);
-    $estado = mysqli_real_escape_string($con, $_POST['estado']);
-    $cnes = mysqli_real_escape_string($con, $_POST['CNES']);
-    // CORREÇÃO 1: Pegando a variável correta vinda do POST ($_POST['senha'])
-    // CORREÇÃO 2: Não use mysqli_real_escape_string aqui para não corromper os caracteres especiais do hash
-    $senhaCrua = $_POST['senha']; 
-    $senha = password_hash($senhaCrua, PASSWORD_DEFAULT);            
-
-    // Query de inserção
-    $query = "INSERT INTO tabHospitais(email, nome, telefone, cep, rua, cidade, bairro, estado, cnes, senha) 
-              VALUES ('$email', '$nome', '$telefone', '$cep', '$rua', '$cidade', '$bairro', '$estado', '$cnes', '$senha')";
-
-    $result = mysqli_query($con, $query);
-
-    if ($result) {
-        echo '<script> 
-        Swal.fire({
-            title: "Sucesso!",
-            text: "Hospital cadastrado com sucesso! Clique no botão para ser redirecionado.",
-            icon: "success",
-            confirmButtonText: "OK"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = "Login.php";
-            }
-        });
-        </script>';
-        exit; 
-    }       
-    else 
-    {
-        echo '<script> 
-        Swal.fire({
-            title: "Erro",
-            html: "Não foi possível salvar os dados no banco.",
-            icon: "error"
-        });
-        </script>';
-    }
-}
-?>
-<?php 
-    // Validação do registro CNES
-    function validarEstruturaCNES($cnes) 
-{
-    // Remove caracteres não numéricos
-    $cnes = preg_replace('/[^0-9]/', '', $cnes);
-    
-    // CNES deve ter exatamente 7 dígitos
-    if (strlen($cnes) != 7) {
-        return false;
-    }
-
-    // Algoritmo de Módulo 11 (adaptado para os 7 dígitos do CNES)
-    $peso = [6, 5, 4, 3, 2, 9, 8];
-    $soma = 0;
-
-    for ($i = 0; $i < 6; $i++) {
-        $soma += (int)$cnes[$i] * $peso[$i];
-    }
-
-    $resto = $soma % 11;
-    $digitoCalculado = ($resto < 2) ? 0 : (11 - $resto);
-
-    // O último dígito deve ser igual ao dígito calculado
-    return (int)$cnes[6] === $digitoCalculado;
-}
-    // Exemplo básico de busca de dados do CNES via cURL
-$numero_cnes = "S_POST['CNES']"; // Substitua pelo CNES que você quer validar
-
-// URL pública de consulta (Adapte conforme o endpoint de dados abertos se disponível)
-$url = "https://cnes.datasus.gov.br/"; 
-
-// Configuração do cURL
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-// ... Adicione cabeçalhos HTTP e parâmetros de busca conforme a requisição ...
-$response = curl_exec($ch);
-curl_close($ch);
-
-// Aqui você filtra a $response para saber se o CNES existe na página retornada
-?>
         <header>
             <nav class="navbar">
                 <div class="overlay"></div>
@@ -160,12 +129,7 @@ curl_close($ch);
                 </div>
                 <ul class="nav-links fs-3">
                     <li><a href="index.html" id="inicio">Início</a></li>
-                    <!-- <li><a href="nosso_projeto.html">Nosso Projeto</a></li>
-                    <li><a href="historia.html">História</a></li>
-                    <li><a href="proposito.html">Propósito</a></li> -->
                     <li><a href="contato.php" class="botoes" id="contato1">Contato</a></li>
-                    <!-- <li><a href="FAQ.html">Dúvidas</a></li> -->
-                    <!-- <li><a href="News.php">Newsletter</a></li> -->
                     <li><a href="login.php" class="fw-bold text-decoration-underline botoes" id="entre" >Entre</a></li>
                 </ul>
                 <div class="menu-toggle" id="mobile-menu">
@@ -232,9 +196,13 @@ curl_close($ch);
                                     </div>
                                     
                                     <div class="mb-3">
-                                        <label for="txtEstado" class="form-label estilo-label">Registro CNES(Cadastro Nacional de Estabelecimentos de Saúde):</label>
+                                        <label for="txtCNPJ" class="form-label estilo-label">CNPJ(Cadastro Nacional da Pessoa Jurídica):</label>
+                                        <input type="text" id="CNPJ" class="form-control" oninput="mascaraCNPJ(this)" name="CNPJ" maxlength="18" placeholder="00.000.000/0000-00">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="txtCNES" class="form-label estilo-label">Registro CNES(Cadastro Nacional de Estabelecimentos de Saúde):</label>
                                         <input type="text" class="form-control" id="txtCNES" name="CNES" placeholder="" maxlength="7" required>
-                                        <div id="CNESretorno" class="form-text text-warning fw-bold" style="display:none;">Registro inexistente.</div>
                                     </div>
 
                                     <div class="mb-3">
@@ -331,6 +299,7 @@ curl_close($ch);
                     }
                 });
 
+                // Limpa o formulário caso o CEP não seja encontrado
                 function limpa_formulario_cep() {
                     $("#txtRua, #txtBairro, #txtCidade, #txtEstado").val("");
                 }
@@ -374,22 +343,34 @@ curl_close($ch);
                 const senha = campoSenha.value;
                 const confSenha = campoConfirmarSenha.value;
 
-                // Verifica se as senhas batem e têm tamanho mínimo de 8 caracteres
                 if(senha === confSenha && senha.length >= 8) {
                     botaoCadastrar.disabled = false;
                     feedback.style.display = "none";
                 } else {
                     botaoCadastrar.disabled = true;
-                    // Só exibe o aviso se o usuário já tiver começado a digitar a confirmação
                     if(confSenha.length > 0) {
                         feedback.style.display = "block";
                     }
                 }
             }
 
-            // Ouve as mudanças em tempo real em ambos os campos
             campoSenha.addEventListener('input', verificaCampos);
             campoConfirmarSenha.addEventListener('input', verificaCampos);
+
+            function mascaraCNPJ(elemento) {
+                let valor = elemento.value.replace(/\D/g, "");
+
+                if (valor.length > 14) {
+                    valor = valor.substring(0, 14);
+                }
+
+                valor = valor.replace(/^(\d{2})(\d)/, "$1.$2");
+                valor = valor.replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3");
+                valor = valor.replace(/\.(\d{3})(\d)/, ".$1/$2");
+                valor = valor.replace(/(\d{4})(\d{2})$/, "$1-$2");
+
+                elemento.value = valor;
+            }
         </script>
     </body>
 </html>

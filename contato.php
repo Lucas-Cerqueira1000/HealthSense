@@ -182,6 +182,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             color: white;
             opacity: 0.7;
         }
+        @media(max-width: 625px)
+        {
+            #contato
+            {
+                /* width: -50px; */
+                transform: scale(0.8);
+            }
+        }
+         @media(max-width: 505px)
+        {
+            #contato
+            {
+                /* width: -50px; */
+                transform: scale(0.7);
+            }
+        }
         </style>
     </head>
     <body>

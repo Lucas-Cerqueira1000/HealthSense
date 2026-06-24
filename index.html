@@ -2,26 +2,20 @@
 <html lang="pt-br">
     <head>
         <title>Home</title>
-        <!-- Required meta tags -->
         <meta charset="utf-8" />
         <meta
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-        <!-- Link AJAX -->
         <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js"></script>
-        <!-- Link Tailwind -->
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-        <!-- <script src="../Tailwind/Tailwind.txt"></script> -->
         <link rel="stylesheet" href="../bootstrap-5.3.8-dist/css/bootstrap.css">
-        <!-- Bootstrap CSS v5.2.1 -->
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
             rel="stylesheet"
             integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
             crossorigin="anonymous"
         />
-        <!-- Bootstrap JavaScript Libraries -->
         <script
             src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
             integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
@@ -34,9 +28,7 @@
             crossorigin="anonymous"
             ></script>
 
-            <!-- main style -->
-             <link rel="stylesheet" href="src/main-style.css">
-             <!-- <link rel="stylesheet" href="src/estilos.css"> -->
+            <link rel="stylesheet" href="src/main-style.css">
     </head>
     <style>
         :root
@@ -87,36 +79,30 @@
                 flex-direction: column;
                 align-items: center;
             }
-            
-            /* Removidos os offsets 'top' que causavam o espaço em branco */
             footer, main 
             {
                 top: 0;
             }
         }
-        body
-        {
-            /*font-family: var(--Roboto);*/
-        }
+
 .faq-container 
 {
-    max-width: 800px; /* Largura máxima confortável para leitura */
-    width: 90%; /* Responsivo para telas menores */
+    max-width: 800px; 
+    width: 90%; 
     background: var(--verde);
     padding: 30px;
     display: flex;
-    flex-direction: column; /* Título em cima, perguntas embaixo */
-    margin: 40px auto; /* O 'auto' centraliza o bloco horizontalmente na tela */
+    flex-direction: column; 
+    margin: 40px auto; 
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
-/* Eliminados os scalings que destruíam a legibilidade no celular */
 @media(max-width: 640px) {
     .faq-container {
-        padding: 15px; /* Apenas reduz o espaçamento interno para caber mais conteúdo */
+        padding: 15px; 
     }
     .faq-question {
-        font-size: 0.95rem; /* Ajuste suave no tamanho da fonte */
+        font-size: 0.95rem; 
     }
 }
 .faq-item[open] .faq-answer {
@@ -161,7 +147,6 @@ h2 {
     margin-bottom: 30px;
 }
 
-/* Estilização do Details (Cada pergunta) */
 .faq-item {
     border: 1px solid var(--bege);
     border-radius: 8px;
@@ -170,13 +155,11 @@ h2 {
     transition: all 0.8s ease;
 }
 
-/* Quando o item estiver aberto, muda a cor da borda */
 .faq-item[open] {
     border-color: var(--bege);
     box-shadow: 0 2px 8px rgba(79, 70, 229, 0.1);
 }
 
-/* Estilização da Pergunta (Summary) */
 .faq-question {
     padding: 16px;
     color: white;
@@ -184,7 +167,7 @@ h2 {
     transition: 3s ease;
     cursor: pointer;
     border: white;
-    list-style: none; /* Esconde a seta padrão no Chrome/Firefox */
+    list-style: none; 
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -192,12 +175,10 @@ h2 {
     user-select: none;
 }
 
-/* Esconde a seta padrão no Safari */
 .faq-question::-webkit-details-marker {
     display: none;
 }
 
-/* Adicionando um ícone customizado de "+" usando pseudo-elemento */
 .faq-question::after {
     content: '+';
     font-size:  2.2rem;
@@ -205,14 +186,12 @@ h2 {
     transition: transform 0.5s ease;
 }
 
-/* Gira o "+" para virar um "×" ou indica abertura quando expandido */
 .faq-item[open] .faq-question::after {
     transform: rotate(135deg);
     color: #ffffff;
     border: var(--bege);
 }
 
-/* Estilização da Resposta */
 .faq-answer {
     padding: 0 16px 16px 16px;
     background-color: var(--verdeescuro);
@@ -221,16 +200,10 @@ h2 {
     font-size: 0.95rem;
     border-top: 1px solid var(--bege);
 }
-/* .faq-container
-{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between; 
-} */
+
 body
 {
     display: flex;
-    /* flex-direction: ; */
 }
 main
 {
@@ -253,12 +226,8 @@ main
 {
     position: fixed;
     display: none;
-    /* bottom: 40px; */
     right: 100px;
-    /* z-index: 999; */
     top: 1215px;
-    /* padding: 25px; */
-    /* border-radius: 50rem; */
     cursor: pointer;
     transition: opacity 0.3s ease;
     background-color: transparent;
@@ -267,17 +236,15 @@ main
 .oculto 
 {
     opacity: 0;
-    pointer-events: none; /* Evita cliques quando invisível */
+    pointer-events: none; 
 }
 
-/*Animações de elementos surgindo*/
-/* 1. Defina o roteiro da animação garantindo a invisibilidade no início */
 @keyframes surgir 
 {
   0% 
   {
     opacity: 0;
-    transform: translateY(50px); /* Opcional: dá um efeito sutil de subir enquanto surge */
+    transform: translateY(50px); 
   }
   100% 
   {
@@ -286,13 +253,11 @@ main
   }
 }
 
-/* 2. Aplique a animação aos elementos */
 #nosso_proposito, #historia, #FAQ
 {
   opacity: 0; 
   animation: surgir ease-out forwards;
   animation-timeline: view(); 
-  /* Começa logo que brota 10% na tela e finaliza com mais suavidade ao avançar */
   animation-range: entry 10% cover 40%;
 }
 modal-viewer
@@ -315,7 +280,6 @@ modal-viewer
     height: 500px;
     cursor: pointer;
 }
-/* Responsividade correta para o modelo 3D sem quebrar o layout */
 @media(max-width: 720px) {
     #modelo, #produto {
         width: 90%;
@@ -327,13 +291,12 @@ modal-viewer
         height: 300px;
     }
 }
-/* Removemos as reduções por scale e posicionamentos relativos que geravam o buraco */
 @media(max-width: 420px) {
     #modelo, #produto {
         height: 250px;
     }
     #FAQ, .faq-container {
-        position: static; /* Volta ao fluxo normal da página */
+        position: static; 
     }
 }
 html
@@ -341,12 +304,85 @@ html
         scroll-behavior: smooth;
     }
 
+/* ALTERAÇÕES DO CARROSSEL CUSTOMIZADO AQUI */
+.carousel-container {
+    position: relative;
+    max-width: 800px;
+    margin: auto;
+    overflow: hidden; 
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.carousel-slide {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+}
+
+.custom-carousel-item {
+    min-width: 100%;
+    width: 100%;
+    position: relative;
+    display: block; 
+}
+
+.custom-carousel-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.caption {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #f2f2f2;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 18px;
+    z-index: 2;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -35px;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0,0,0,0.4);
+    border: none;
+    z-index: 10;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+@media(max-width: 845px)
+{
+    .carousel-container
+    {
+        transform: scale(0.8);
+    }
+}
     </style>
     <body>
         <p id="texto">Voltar ao topo.</p>
     <button id="btn-topo" class="oculto">↑</button>
         <header>
-      <!-- place navbar here -->
       <nav class="navbar">
         <div class="overlay"></div>
         <div class="logo fs-3">
@@ -361,12 +397,7 @@ html
             </div>
         <ul class="nav-links fs-3">
             <li><a href="" class="fw-bold text-decoration-underline links" id="inicio">Início</a></li>
-            <!-- <li><a href="#nosso_projeto">Nosso Projeto</a></li>
-            <li><a href="#historia">História</a></li>
-            <li><a href="#nosso_proposito">Propósito</a></li>
-            <li><a href="#FAQ">Dúvidas</a></li> -->
             <li><a href="contato.php" class="botoes links" id="contato1">Contato</a></li>
-            <!-- <li><a href="News.php">Newsletter</a></li> -->
             <li><a href="login.php" class="botoes links" id="entre">Entre</a></li>
         </ul>
         
@@ -379,11 +410,8 @@ html
     </nav>  
         </header>
         <main class="flex flex-col min-h-screen vw-100 p-0">
-            <!-- <h1>Corpo</h1> -->
             <br>
             <img src="img/teste7.png" class="img-fluid rounded mx-auto d-block " alt="logo do health sense" srcset="" height="400px" width="400px" class="container" id="logo">
-            <!-- <label for="">Tema</label> -->
-            <!-- <input type="checkbox" name="" id="tema"> -->
             <br>
             <section id="nosso_projeto">
                 <h1 class="text-center fw-bold">Sobre o nosso projeto </h1>
@@ -391,9 +419,9 @@ html
             </section>
              <h1 class="text-center fw-bold">Prints do nosso APP:</h1>
             <section id="prints" class="text-center container">
-                 <img src="img/Print_1.png" class="img-fluid rounded img-thumbnail shadow" alt="imagem da tela do nosso aplicativo." height="400px" width="430px">
-                 <img src="img/Print_2.png" class="img-fluid rounded img-thumbnail shadow" alt="imagem da tela do nosso aplicativo." height="400px" width="430px">
-                 <img src="img/Print_3.png" class="img-fluid rounded img-thumbnail shadow" alt="imagem da tela do nosso aplicativo." height="400px" width="430px">
+                 <img src="img/MainActivity.png" class="img-fluid rounded img-thumbnail shadow" alt="imagem da tela do nosso aplicativo." height="400px" width="430px">
+                 <img src="img/HomeMedico.png" class="img-fluid rounded img-thumbnail shadow" alt="imagem da tela do nosso aplicativo." height="400px" width="430px">
+                 <img src="img/HomePaciente.png" class="img-fluid rounded img-thumbnail shadow" alt="imagem da tela do nosso aplicativo." height="400px" width="430px">
             </section>
             <section id="historia">
                 <h1 class="text-center m-4">A Nossa História</h1>   
@@ -411,31 +439,40 @@ html
                      <img src="img/ods3.webp" class="img-fluid rounded img-thumbnail shadow" alt="imagem da ods(Objetivos de desenvolvimento sustentaveis) 3 - saúde e bem-estar" height="300px" width="300px">
                      <img src="img/ods9.webp" class="img-fluid rounded img-thumbnail shadow" alt="imagem da ods(Objetivos de desenvolvimento sustentaveis) 9 - Indústria, inovação e infraestruturas" height="300px" width="300px">
                      <img src="img/ods10.webp" class="img-fluid rounded img-thumbnail shadow" alt="imagem da ods(Objetivos de desenvolvimento sustentaveis) 10 - reduzir as desigualdades" height="300px" width="300px">
-                   
             </section>
             <br><br>
-                <section id="equipe">
-                    <h1 class="text-center m-4">Nossa Equipe</h1>   
-                    <p class="text-center container" id="nossoprojeto">Para desenvolver esse projeto foi necessário o apoio de muitas pessoas, das quais, a equipe principal do projeto "Health Sense".</p>
-                 </section>
-                  <section id="prints" class="text-center container">
-                    <figure>
-                        <img src="img/ods3.webp" class="img-fluid rounded img-thumbnail shadow" alt="imagem do Antonio, lider e programador Android." height="300px" width="300px">
-                        <figcaption class="fw-bold">Antonio, lider e programador Android.</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="img/ods9.webp" class="img-fluid rounded img-thumbnail shadow" alt="Branca" height="300px" width="300px">
-                        <figcaption>Branca, </figcaption>
-                    </figure>
-                    <figure>
-                        <img src="img/ods10.webp" class="img-fluid rounded img-thumbnail shadow" alt="Lucas, programador do site." height="300px" width="300px">
-                        <figcaption>Lucas, programador do site.</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="img/ods10.webp" class="img-fluid rounded img-thumbnail shadow" alt="Paulo, documentador do projeto." height="300px" width="300px">
-                        <figcaption>Paulo, documentador do projeto.</figcaption>
-                    </figure>
+            <section id="equipe">
+                <h1 class="text-center m-4">Nossa Equipe</h1>   
+                <p class="text-center container" id="nossoprojeto">Para desenvolver esse projeto foi necessário o apoio de muitas pessoas, das quais, a equipe principal do projeto "Health Sense".</p>
+                
+                <div class="carousel-container">
+                    <div class="carousel-slide">
+                        <div class="custom-carousel-item">
+                            <img src="img/10.jpg" alt="Descrição da Imagem 1">
+                            <div class="caption">Paulo, documentador do projeto.</div>
+                        </div>
+                        
+                        <div class="custom-carousel-item">
+                            <img src="img/11.jpg" alt="Descrição da Imagem 2">
+                            <div class="caption">Lucas, responsável pelo site.</div>
+                        </div>
+
+                        <div class="custom-carousel-item">
+                            <img src="img/12.jpg" alt="Descrição da Imagem 3">
+                            <div class="caption">Branca, responsável pelo produto.</div>
+                        </div>
+
+                        <div class="custom-carousel-item">
+                            <img src="img/13.jpg" alt="Descrição da Imagem 4">
+                            <div class="caption">Antonio, programador Android.</div>
+                        </div>
+                    </div>
+
+                    <button class="prev" onclick="prevSlide()">&#10094;</button>
+                    <button class="next" onclick="nextSlide()">&#10095;</button>
+                </div>
             </section>
+            <br>
             <h1 class="text-center fw-bold">Veja o nosso produto</h1>
             <section id="modelo">
                 <model-viewer 
@@ -449,7 +486,6 @@ html
             <h4 class="text-center fw-bold">Modelo 3D gerado na ferramenta "MESHY AI".</h4>
             <section class="faq-container" id="FAQ">
                 <h2>Dúvidas Frequentes</h2>
-                <!-- <p class="faq-subtitle">Se não encontrar o que procura, entre em contato conosco.</p> -->
 
                 <details class="faq-item">
                     <summary class="faq-question" onclick="oq()">O que é o nosso projeto?</summary>
@@ -502,29 +538,26 @@ html
             <br><br><br><br><br>
         </main>
         <footer class="mt-auto container-fluid vw-100 text-center">
-            <!-- place footer here -->
              <div class="text-center container">
               <h3 class="text-center container" id="copy">&copy HealthSense Systems</h3>
                 <section id="redes" class="text-center container">
                     <a href="https://x.com/?lang=pt" target="_blank">    
-                        <img src="img/X.png" class="img-fluid shadow" alt="imagem da ods(Objetivos de desenvolvimento sustentaveis) 3 - saúde e bem-estar" height="60px" width="70px" id="x">
+                        <img src="img/X.png" class="img-fluid shadow" alt="imagem do X" height="60px" width="70px" id="x">
                     </a>
                     <a href="https://www.instagram.com/" target="_blank">
-                        <img src="img/Instagram.png" class="img-fluid shadow" alt="imagem da ods(Objetivos de desenvolvimento sustentaveis) 9 - Indústria, inovação e infraestruturas" height="40px" width="70px" id="instagram">
+                        <img src="img/Instagram.png" class="img-fluid shadow" alt="imagem do instagram" height="40px" width="70px" id="instagram">
                     </a>
                     <a href="https://www.facebook.com/?locale=pt_BR" target="_blank">
-                        <img src="img/Facebook.png" class="img-fluid shadow" alt="imagem da ods(Objetivos de desenvolvimento sustentaveis) 10 - reduzir as desigualdades" height="40px" width="70px" id="facebook">
+                        <img src="img/Facebook.png" class="img-fluid shadow" alt="imagem do facebook" height="40px" width="70px" id="facebook">
                     </a>
             </section>
              </div>
-             
         </footer>
         <script src="js/main-script.js"></script>
         <script src="js/scripts.js"></script>
         <script>
             const btnTopo = document.getElementById("btn-topo");
 
-// Mostra o botão ao rolar a página para baixo
 window.addEventListener("scroll", function() {
     if (window.scrollY > 300) {
         btnTopo.classList.remove("oculto");
@@ -533,12 +566,81 @@ window.addEventListener("scroll", function() {
     }
 });
 
-// Volta ao topo suavemente ao clicar
 btnTopo.addEventListener("click", function() {
     window.scrollTo({
         top: 0,
         behavior: "smooth"
     });
+});
+
+// ==========================================
+// CARROSSEL CORRIGIDO
+// ==========================================
+let slideIndex = 0;
+let timer = null;
+
+const carouselSlide = document.querySelector(".carousel-slide");
+const slides = document.querySelectorAll(".custom-carousel-item");
+
+showSlides(false); // Inicializa sem transição
+startTimer(); 
+
+function startTimer() {
+    // Evita acumular múltiplos intervalos limpando antes de criar
+    if (timer) clearInterval(timer);
+    timer = setInterval(nextSlide, 4000); 
+}
+
+function nextSlide() {
+    slideIndex++;
+    // Se passar da última, vai para a primeira instantaneamente sem transição reversa
+    if (slideIndex >= slides.length) {
+        slideIndex = 0;
+        showSlides(false); 
+    } else {
+        showSlides(true);
+    }
+    resetTimer();
+}
+
+function prevSlide() {
+    slideIndex--;
+    // Se for antes da primeira, vai para a última instantaneamente
+    if (slideIndex < 0) {
+        slideIndex = slides.length - 1;
+        showSlides(false);
+    } else {
+        showSlides(true);
+    }
+    resetTimer();
+}
+
+function showSlides(withTransition = true) {
+    if (!carouselSlide || slides.length === 0) return;
+
+    // Controla se o efeito de deslizar deve acontecer ou não
+    if (withTransition) {
+        carouselSlide.style.transition = "transform 0.5s ease-in-out";
+    } else {
+        carouselSlide.style.transition = "none";
+    }
+    
+    let offset = -slideIndex * 100;
+    carouselSlide.style.transform = `translateX(${offset}%)`;
+}
+
+function resetTimer() {
+    clearInterval(timer);
+    startTimer();
+}
+
+// Controladores do Mouse protegidos contra múltiplos intervalos
+document.querySelector('.carousel-container').addEventListener('mouseenter', () => {
+    clearInterval(timer);
+});
+
+document.querySelector('.carousel-container').addEventListener('mouseleave', () => {
+    startTimer();
 });
 
         </script>
