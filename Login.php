@@ -166,8 +166,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                                     <a href="Cadastro.php" class="text-center text-decoration-underline fw-bold">Não possui login?</a>
                                     
                                     <div class="text-center mt-3">
-                                        <button type="submit" class="btn btn-success btn-lg w-100 mb-2">Entrar</button>
-                                        <button type="reset" class="btn btn-danger btn-lg w-100">Cancelar</button>
+                                    <button type="submit" class="btn btn-success btn-lg w-100 mb-2 position-relative" id="btnEntrar">
+                                        <span class="texto-botao">Entrar</span>
+                                        <span class="spinner"></span>
+                                    </button>                                        
+                                    <button type="reset" class="btn btn-danger btn-lg w-100">Cancelar</button>
                                     </div>
                                 </form>
 
@@ -199,5 +202,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                 });
             });
         </script>
+        <script>
+        // Selecionamos o formulário em vez do botão diretamente
+        const form = document.querySelector("form");
+        const botao = document.getElementById("btnEntrar");
+            
+        form.addEventListener("submit", function(e) {
+        // 1. Ativa a classe de carregamento visual
+        botao.classList.add("ativo");
+        
+        // 2. Para não travar o envio do formulário, usamos o setTimeout 
+        // para desabilitar o botão um milissegundo depois do clique
+        setTimeout(function() {
+            botao.disabled = true;
+        }, 10);
+        
+        // O formulário seguirá seu curso natural enviando os dados para o PHP
+    });
+</script>
     </body>
 </html>
