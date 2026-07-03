@@ -87,8 +87,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                 background-color: var(--bege);
                 font-family: Comfortaa;
             }
-            main {
+            main 
+            {
                 font-size: large;
+                /* background: url(img/gif.gif); */
+                
+            }
+            #imagem 
+            {
+                position: relative;
+                /* height: 40px; */
+                background-size: cover;          /* Faz a imagem cobrir toda a área */
+                background-position: center;     /* Centraliza a imagem na tela */
+                background-repeat: no-repeat;    /* Evita que a imagem se repita */
+                background-attachment: fixed;    /* Mantém a imagem fixa ao rolar a página */
+                height: 100vh;                   /* Ocupa 100% da altura da tela */
+                margin: 0;                       /* Remove a margem padrão do navegador */
+                padding: 0;                      /* Remove o padding padrão do navegador */
             }
             #for {
                 background-color: var(--verde);
@@ -97,6 +112,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             }
             footer {
                 background-color: var(--verde);
+            }
+
+            /* --- ESTILOS ADICIONADOS PARA FUNCIONAMENTO DO SPINNER --- */
+            #btnEntrar.ativo .texto-botao {
+                visibility: hidden;
+                opacity: 0;
+            }
+            #btnEntrar.ativo .spinner {
+                visibility: visible !important;
+                opacity: 1 !important;
+            }
+            .spinner {
+                visibility: hidden;
+                opacity: 0;
+                width: 20px;
+                height: 20px;
+                border: 4px solid rgba(255, 255, 255, 0.3);
+                border-top-color: white;
+                border-radius: 50%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-top: -10px;
+                margin-left: -10px;
+                animation: girar 1s linear infinite;
+            }
+            @keyframes girar {
+                to { transform: rotate(360deg); }
             }
         </style>
     </head>
@@ -116,12 +159,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                 </div>
                 <ul class="nav-links fs-3">
                     <li><a href="index.html" id="inicio">Início</a></li>
-                    <!-- <li><a href="nosso_projeto.html">Nosso Projeto</a></li>
-                    <li><a href="historia.html">História</a></li>
-                    <li><a href="proposito.html">Propósito</a></li> -->
                     <li><a href="contato.php" class="botoes" id="contato1">Contato</a></li>
-                    <!-- <li><a href="FAQ.html">Dúvidas</a></li> -->
-                    <!-- <li><a href="News.php">Newsletter</a></li> -->
                     <li><a href="login.php" class="fw-bold text-decoration-underline botoes" id="entre">Entre</a></li>
                 </ul>
                 <div class="menu-toggle" id="mobile-menu">
@@ -133,6 +171,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         </header>
 
         <main class="flex-grow-1 d-flex align-items-center justify-content-center py-5">
+            <!-- <div id="imagem"><img src="img/gif.gif" alt=""></div> -->
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-12 d-flex justify-content-center">
@@ -148,12 +187,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                                     </div>
                                 <?php endif; ?>
                                 
-                                <form method="POST" action="">
+                                <form method="POST" action="" id="formlogin">
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label" id="email">E-mail:</label>
                                         <input type="email" class="form-control" id="exampleInputEmail1" name="email" required>
                                     </div>
-                                    
+                                    <img src="" alt="">
                                     <div class="mb-3">  
                                         <label for="exampleInputPassword1" class="form-label" id="senha">Senha:</label>
                                         <input type="password" class="form-control" id="exampleInputPassword1" name="senha" required>
@@ -203,22 +242,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             });
         </script>
         <script>
-        // Selecionamos o formulário em vez do botão diretamente
-        const form = document.querySelector("form");
-        const botao = document.getElementById("btnEntrar");
+        const formlogin = document.getElementById("formlogin");
+        const botaosalvar = document.getElementById("btnEntrar");
             
-        form.addEventListener("submit", function(e) {
-        // 1. Ativa a classe de carregamento visual
-        botao.classList.add("ativo");
-        
-        // 2. Para não travar o envio do formulário, usamos o setTimeout 
-        // para desabilitar o botão um milissegundo depois do clique
-        setTimeout(function() {
-            botao.disabled = true;
-        }, 10);
-        
-        // O formulário seguirá seu curso natural enviando os dados para o PHP
-    });
-</script>
+        formlogin.addEventListener("submit", function(e) {
+            // 1. Ativa a classe de carregamento visual
+            botaosalvar.classList.add("ativo");
+            
+            // 2. Para não travar o envio do formulário, usamos o setTimeout 
+            // para desabilitar o botão um milissegundo depois do clique
+            setTimeout(function() {
+                botaosalvar.disabled = true;
+            }, 10);
+        });
+        </script>
     </body>
 </html>

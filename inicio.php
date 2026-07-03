@@ -87,8 +87,8 @@ button.ativo .texto-botao {
 }
 
 button.ativo .spinner {
-  visibility: visible;
-  opacity: 1;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 /* O formato do ícone de carregamento (Spinner) */
@@ -103,13 +103,14 @@ button.ativo .spinner {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  margin-top: -10px;
+  margin-left: -10px;
   animation: girar 1s linear infinite;
 }
 
 /* A animação de rotação */
 @keyframes girar {
-  to { transform: translate(-50%, -50%) rotate(360deg); }
+  to { transform: rotate(360deg); }
 }
 #formHospital
 {
@@ -137,7 +138,7 @@ button.ativo .spinner {
                     </label>
                 </div>
                 <ul class="nav-links fs-3 text-center" id="links">
-                    <li><a href="inicio.php" class="botoes1">Início</a></li>
+                    <li><a href="inicio.php" class="botoes1 fw-bold text-decoration-underline links">Início</a></li>
                     <li><a href="Medicos.php" class="botoes1">Médicos</a></li>
                     <li><a href="CadastrarMedicos" class="botoes1">Cadastrar Médicos</a></li>
                     <li><a href="DeletarMedicos.php" class="botoes1">Deletar Médicos</a></li>
@@ -301,6 +302,7 @@ button.ativo .spinner {
             } else {
                 btnSalvar.classList.add('d-none');
                 btnDeletar.classList.add('d-none');
+                btnSalvar.disabled = false; // Garante que o botão destrave ao sumir
             }
         }
 
@@ -347,6 +349,7 @@ button.ativo .spinner {
                     input.setAttribute('readonly', 'readonly');
                 }
                 gerenciarBotoesGlobais();
+                if(typeof verificaCampos === "function") verificaCampos();
             }
         }
 
@@ -371,6 +374,7 @@ button.ativo .spinner {
                     confirmarDiv.classList.add('d-none');
                 }
                 gerenciarBotoesGlobais();
+                if(typeof verificaCampos === "function") verificaCampos();
             }
         }
         </script>
@@ -414,7 +418,7 @@ button.ativo .spinner {
                     valor = valor.substring(0, 14);
                 }
 
-                valor = valor.replace(/^(\d{2})(\d)/, "$1.$2");
+                value = valor.replace(/^(\d{2})(\d)/, "$1.$2");
                 valor = valor.replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3");
                 valor = valor.replace(/\.(\d{3})(\d)/, ".$1/$2");
                 valor = valor.replace(/(\d{4})(\d{2})$/, "$1-$2");
@@ -452,16 +456,11 @@ button.ativo .spinner {
         </script>
 <script>
     const formHospital = document.getElementById("formHospital");
-    const botaoSalvar = document.getElementById("btn-salvar");
+    const botaosalvar = document.getElementById("btn-salvar");
 
     formHospital.addEventListener("submit", function(e) {
-        // Ativa a animação visual do spinner
-        botaoSalvar.classList.add("ativo");
-        
-        // Desabilita ligeiramente depois para permitir que o navegador envie os dados
-        setTimeout(function() {
-            botaoSalvar.disabled = true;
-        }, 10);
+        // Ativa a animação visual do spinner imediatamente
+        botaosalvar.classList.add("ativo");
     });
 </script>
 <script>

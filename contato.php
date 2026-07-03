@@ -109,7 +109,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         #nome
         {
             background-color: var(--verdeescuro);
-            width: 600px;
+            width: 100%;
+            max-width: 600px;
             height: 100px;
             resize: none;
             border-radius: 5px;
@@ -120,7 +121,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         #email
         {
             background-color: var(--verdeescuro);
-            width: 600px;
+            width: 100%;
+            max-width: 600px;
             height: 130px;
             resize: none;
             border-radius: 5px;
@@ -131,7 +133,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         #assunto 
         {
             background-color: var(--verdeescuro);
-            width: 600px;
+            width: 100%;
+            max-width: 600px;
             height: 100px;
             resize: none;
             border-radius: 5px;
@@ -142,7 +145,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         #mensagem 
         {
             background-color: var(--verdeescuro);
-            width: 600px;
+            width: 100%;
+            max-width: 600px;
             height: 370px;
             resize: none;
             border-radius: 5px;
@@ -155,6 +159,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             display: flex;
             flex-direction: column;
             justify-content: baseline;
+            align-items: center;
+            width: 100%;
+            padding: 0 15px;
+        }
+        #contato form {
+            width: 100%;
+            max-width: 600px;
         }
         #lbl 
         {
@@ -182,20 +193,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             color: white;
             opacity: 0.7;
         }
-        @media(max-width: 625px)
+        @media(min-width: 390px)
         {
-            #contato
+            #btnEnviar
             {
-                /* width: -50px; */
-                transform: scale(0.8);
-            }
-        }
-         @media(max-width: 505px)
-        {
-            #contato
-            {
-                /* width: -50px; */
-                transform: scale(0.7);
+                position: relative;
+                top: 4px;
             }
         }
         </style>
@@ -216,12 +219,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                 </div>
                 <ul class="nav-links fs-3">
                     <li><a href="index.html" id="inicio">Início</a></li>
-                    <!-- <li><a href="nosso_projeto.html">Nosso Projeto</a></li>
-                    <li><a href="historia.html">História</a></li>
-                    <li><a href="proposito.html">Propósito</a></li> -->
                     <li><a href="contato.php" class="botoes fw-bold text-decoration-underline" id="contato1">Contato</a></li>
-                    <!-- <li><a href="FAQ.html">Dúvidas</a></li> -->
-                    <!-- <li><a href="News.php">Newsletter</a></li> -->
                     <li><a href="login.php" class=" botoes" id="entre" >Entre</a></li>
                 </ul>
                 <div class="menu-toggle" id="mobile-menu">
@@ -232,7 +230,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             </nav>  
         </header>
 
-        <main class="flex flex-col min-h-screen vw-100 p-0">
+        <main class="flex flex-col min-h-screen w-full p-0">
             <section id="projeto">
                 <br><br><br><br><br>
                 <h1 class="text-center m-4">Formas de contatar-nos:</h1>   
@@ -256,8 +254,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                     <br>
                     <label id="lbl">Assunto:</label>
                     <br>
-                    <textarea name="assunto" id="assunto" placeholder="Digite aqui o assunto da mensagem." required data-maxlength="200"></textarea>
-                    <div id="contador">0 / 200</div>
+                    <textarea name="assunto" id="assunto" placeholder="Digite aqui o assunto da mensagem." required data-maxlength="150"></textarea>
+                    <div id="contador">0 / 150</div>
                     <br>
                     <label id="lbl">Mensagem:</label>
                     <br>
@@ -265,8 +263,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                     <div id="contador">0 / 700</div>
                     <br><br>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-success">Enviar Mensagem</button>
-                        <!-- <br><br> -->
+                        <button type="submit" class="btn btn-success mb-2" id="btnEnviar">Enviar Mensagem</button>
                         <button type="reset" class="btn btn-danger">Limpar Mensagem</button>
                     </div>
                 </form>
@@ -274,7 +271,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             <br><br><br><br>
         </main>
 
-        <footer class="mt-auto container-fluid vw-100 text-center">
+        <footer class="mt-auto container-fluid w-full text-center">
              <div class="text-center container">
               <h3 class="text-center container" id="copy">&copy; HealthSense Systems</h3>
              </div>

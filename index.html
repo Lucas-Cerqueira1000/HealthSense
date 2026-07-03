@@ -378,6 +378,35 @@ html
         transform: scale(0.8);
     }
 }
+
+/*Animações de texto*/
+
+/* Animação de revelação da esquerda para a direita */
+@keyframes revelarTexto {
+  0% {
+    /* Esconde o texto completamente da esquerda para a direita */
+    clip-path: inset(0 100% 0 0);
+  }
+  100% {
+    /* Mostra o texto completamente */
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* Classe utilitária para aplicar nos textos */
+.texto-revelar {
+  /* Garante que o efeito funcione sem quebrar o layout */
+  display: inline-block; 
+  width: 100%;
+  
+  /* Conecta a animação ao scroll */
+  animation: revelarTexto linear both;
+  animation-timeline: view();
+  
+  /* Controla quando a animação começa e termina na tela */
+  /* Começa quando o topo do elemento entra 20% na tela e termina quando chega a 60% */
+  animation-range: entry 20% cover 60%; 
+}
     </style>
     <body>
         <p id="texto">Voltar ao topo.</p>
@@ -414,8 +443,9 @@ html
             <img src="img/teste7.png" class="img-fluid rounded mx-auto d-block " alt="logo do health sense" srcset="" height="400px" width="400px" class="container" id="logo">
             <br>
             <section id="nosso_projeto">
-                <h1 class="text-center fw-bold">Sobre o nosso projeto </h1>
-                 <p class="text-center container" id="nossoprojeto">Nosso projeto é sobre uma pulseira inteligente capaz de monitorar os sinais vitais do paciente com um aplicativo que relata o diagnóstico dele para os profissionais de saúde com antecedência e, se houver alguma instabilidade, alerta todos os responsáveis técnicos do setor. O app será apenas disponibilizado para as empresas hospitalares (públicas) sobre um contrato, e será instalado pelos técnicos enviados pela empresa para instalar o programa em todo sistema do hospital. Assim conectando o sistema de banco de dados do hospital ao aplicativo para evitar, ao máximo, falhas de atraso ou extravio de dados sobre os pacientes, esse app terá um alarme e monitoramento de pacientes e, quando há alguma ocorrência, o app congela em uma tela de emergência e só retornará automaticamente ao seu modo tradicional quando o paciente for estabilizado.</p>
+                <h1 class="text-center fw-bold texto-revelar">Sobre o nosso projeto</h1>
+                 <!-- <p class="text-center container" id="nossoprojeto">Nosso projeto é sobre uma pulseira inteligente capaz de monitorar os sinais vitais do paciente com um aplicativo que relata o diagnóstico dele para os profissionais de saúde com antecedência e, se houver alguma instabilidade, alerta todos os responsáveis técnicos do setor. O app será apenas disponibilizado para as empresas hospitalares (públicas) sobre um contrato, e será instalado pelos técnicos enviados pela empresa para instalar o programa em todo sistema do hospital. Assim conectando o sistema de banco de dados do hospital ao aplicativo para evitar, ao máximo, falhas de atraso ou extravio de dados sobre os pacientes, esse app terá um alarme e monitoramento de pacientes e, quando há alguma ocorrência, o app congela em uma tela de emergência e só retornará automaticamente ao seu modo tradicional quando o paciente for estabilizado.</p> -->
+                  <p class="text-center container texto-revelar" id="nossoprojeto">Nosso projeto é sobre uma pulseira inteligente capaz de monitorar os sinais vitais do paciente com um aplicativo que relata o diagnóstico dele para os profissionais de saúde com antecedência e, se houver alguma instabilidade, alerta todos os responsáveis técnicos do setor. O app será apenas disponibilizado para as empresas hospitalares (públicas) sobre um contrato. Ele será conectado ao sistema de banco de dados do hospital para evitar, ao máximo, falhas de atraso ou extravio de dados sobre os pacientes.</p>
             </section>
              <h1 class="text-center fw-bold">Prints do nosso APP:</h1>
             <section id="prints" class="text-center container">
@@ -471,12 +501,12 @@ html
                 <div class="carousel-container">
                     <div class="carousel-slide">
                         <div class="custom-carousel-item">
-                            <img src="img/10.jpg" alt="Descrição da Imagem 1">
+                            <img src="img/10.png" alt="Descrição da Imagem 1">
                             <div class="caption">Paulo, documentador do projeto.</div>
                         </div>
                         
                         <div class="custom-carousel-item">
-                            <img src="img/11.jpg" alt="Descrição da Imagem 2">
+                            <img src="img/11.png" alt="Descrição da Imagem 2">
                             <div class="caption">Lucas, responsável pelo site.</div>
                         </div>
 
