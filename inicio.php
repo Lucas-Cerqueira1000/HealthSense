@@ -197,7 +197,7 @@ button.ativo .spinner {
                 <div class="mb-3">
                     <label for="rua" class="form-label fw-bold">Rua:</label>
                     <div class="d-flex align-items-center">
-                        <input type="text" class="form-control me-2" id="rua" name="rua" readonly value="<?php echo htmlspecialchars($dadosHospital['rua']); ?>">
+                        <input type="text" class="form-control me-2" id="rua" name="rua" readonly value="<?php echo htmlspecialchars($dadosHospital['rua']); ?>" placeholder="CEP sem rua.">
                         <img src="lapis.png" alt="Editar" class="btn-editar" style="cursor:pointer;" onclick="ativarInput('rua')">
                     </div>
                 </div>
@@ -213,7 +213,7 @@ button.ativo .spinner {
                 <div class="mb-3">
                     <label for="bairro" class="form-label fw-bold">Bairro:</label>
                     <div class="d-flex align-items-center">
-                        <input type="text" class="form-control me-2" id="bairro" name="bairro" readonly value="<?php echo htmlspecialchars($dadosHospital['bairro']); ?>">
+                        <input type="text" class="form-control me-2" id="bairro" name="bairro" readonly value="<?php echo htmlspecialchars($dadosHospital['bairro']); ?>" placeholder="CEP sem bairro.">
                         <img src="lapis.png" alt="Editar" class="btn-editar" style="cursor:pointer;" onclick="ativarInput('bairro')">
                     </div>
                 </div>

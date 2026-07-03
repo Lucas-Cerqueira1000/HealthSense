@@ -141,6 +141,65 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             @keyframes girar {
                 to { transform: rotate(360deg); }
             }
+            
+            /* --- ESTILOS DO EFEITO INPUT FLUTUANTE --- */
+            .input-container {
+                position: relative;
+                width: 100%;
+                margin: 25px 0;
+                color: white;
+            }
+
+            .input-container input {
+                width: 100%;
+                color: white;
+                padding: 15px;
+                font-size: 16px;
+                border: 1px solid #dadce0;
+                border-radius: 4px;
+                outline: none;
+                transition: border-color 0.3s, box-shadow 0.3s;
+                background-color: transparent;
+                color: white; /* Garante que o texto digitado fique visível no fundo escuro */
+            }
+
+            /* Efeito ao clicar no input (Bordas azuis) */
+            .input-container input:focus {
+                border-color: #1a73e8;
+                box-shadow: 0 0 0 1px #1a73e8;
+            }
+
+            .input-container label {
+                position: absolute;
+                left: 15px;
+                top: 50%;
+                color: white;
+                transform: translateY(-50%);
+                color: #80868b;
+                font-size: 16px;
+                background-color: var(--verde, #ffffff); /* Adapta ao fundo do card */
+                padding: 0 5px;
+                pointer-events: none;
+                transition: all 0.2s ease-out;
+            }
+
+            /* Animação: Quando o input está em foco OU preenchido */
+            .input-container input:focus ~ label,
+            .input-container input:not(:placeholder-shown) ~ label {
+                top: 0;
+                transform: translateY(-50%) scale(0.85);
+                color: #1a73e8;
+            }
+
+            /* Mantém a label cinza quando não está em foco e está vazia */
+            .input-container input:placeholder-shown ~ label {
+                color: #80868b;
+            }
+            #exampleInputPassword1, #exampleInputEmail1
+            {
+                color: white;
+                font-weight: bold;
+            }
         </style>
     </head>
     <body>
@@ -171,7 +230,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         </header>
 
         <main class="flex-grow-1 d-flex align-items-center justify-content-center py-5">
-            <!-- <div id="imagem"><img src="img/gif.gif" alt=""></div> -->
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-12 d-flex justify-content-center">
@@ -188,28 +246,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                                 <?php endif; ?>
                                 
                                 <form method="POST" action="" id="formlogin">
-                                    <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label" id="email">E-mail:</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" name="email" required>
+                                    
+                                    <div class="input-container">
+                                        <input type="email" id="exampleInputEmail1" placeholder=" " name="email" required>
+                                        <label for="exampleInputEmail1" >Digite seu e-mail</label>
                                     </div>
-                                    <img src="" alt="">
-                                    <div class="mb-3">  
-                                        <label for="exampleInputPassword1" class="form-label" id="senha">Senha:</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword1" name="senha" required>
+                                    
+                                    <div class="input-container">  
+                                        <input type="password" id="exampleInputPassword1" name="senha" required placeholder=" ">
+                                        <label for="exampleInputPassword1">Digite sua senha</label>
                                     </div>
 
                                     <div class="mb-3 form-check"> 
                                         <input type="checkbox" class="form-check-input" id="mostrar">
-                                        <label class="form-check-label" for="mostrar" id="label-mostrar">Mostrar senha.</label>
+                                        <label class="form-check-label text-white fw-bold" for="mostrar" id="label-mostrar">Mostrar senha.</label>
                                     </div>
-                                    <a href="Cadastro.php" class="text-center text-decoration-underline fw-bold">Não possui login?</a>
+                                    
+                                    <a href="Cadastro.php" class="text-center text-decoration-underline fw-bold d-block mb-3">Não possui login?</a>
                                     
                                     <div class="text-center mt-3">
-                                    <button type="submit" class="btn btn-success btn-lg w-100 mb-2 position-relative" id="btnEntrar">
-                                        <span class="texto-botao">Entrar</span>
-                                        <span class="spinner"></span>
-                                    </button>                                        
-                                    <button type="reset" class="btn btn-danger btn-lg w-100">Cancelar</button>
+                                        <button type="submit" class="btn btn-success btn-lg w-100 mb-2 position-relative" id="btnEntrar">
+                                            <span class="texto-botao">Entrar</span>
+                                            <span class="spinner"></span>
+                                        </button>                                        
+                                        <button type="reset" class="btn btn-danger btn-lg w-100">Cancelar</button>
                                     </div>
                                 </form>
 

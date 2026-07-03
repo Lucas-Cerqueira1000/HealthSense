@@ -1,21 +1,21 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const toggleSwitch = document.querySelector('#checkbox');
-    const body = document.body;
-    const modeLabel = document.querySelector('#mode-label');
+// document.addEventListener('DOMContentLoaded', () => {
+//     const toggleSwitch = document.querySelector('#checkbox');
+//     const body = document.body;
+//     const modeLabel = document.querySelector('#mode-label');
 
-    // Verifica se os elementos existem antes de adicionar o evento
-    if (toggleSwitch) {
-        toggleSwitch.addEventListener('change', (e) => {
-            if (e.target.checked) {
-                body.classList.add('dark-theme');
-                modeLabel.textContent = "Modo Claro";
-            } else {
-                body.classList.remove('dark-theme');
-                modeLabel.textContent = "Modo Escuro";
-            }
-        });
-    }
-});
+//     // Verifica se os elementos existem antes de adicionar o evento
+//     if (toggleSwitch) {
+//         toggleSwitch.addEventListener('change', (e) => {
+//             if (e.target.checked) {
+//                 body.classList.add('dark-theme');
+//                 modeLabel.textContent = "Modo Claro";
+//             } else {
+//                 body.classList.remove('dark-theme');
+//                 modeLabel.textContent = "Modo Escuro";
+//             }
+//         });
+//     }
+// });
 // O bloco abaixo verifica a opção do tema selecionado pelo usuário, salvando no navegador.
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Seleciona o checkbox do switch de tema

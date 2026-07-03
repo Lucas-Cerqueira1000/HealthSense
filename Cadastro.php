@@ -111,6 +111,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             {
                 background-color: var(--verde);
             }
+
+            /* --- ESTILOS ADICIONADOS PARA FUNCIONAMENTO DO SPINNER --- */
+            #btnCadastrar.ativo .texto-botao {
+                visibility: hidden;
+                opacity: 0;
+            }
+            #btnCadastrar.ativo .spinner {
+                visibility: visible !important;
+                opacity: 1 !important;
+            }
+            .spinner {
+                visibility: hidden;
+                opacity: 0;
+                width: 20px;
+                height: 20px;
+                border: 4px solid rgba(255, 255, 255, 0.3);
+                border-top-color: white;
+                border-radius: 50%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-top: -10px;
+                margin-left: -10px;
+                animation: girar 1s linear infinite;
+            }
+            @keyframes girar {
+                to { transform: rotate(360deg); }
+            }
         </style>
     </head>
     <body>
@@ -150,15 +178,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                                 <h5 class="card-title text-center text-white fw-bold" id="titulo-card">Cadastro P/Hospitais</h5>
                                 <hr>
                                 
-                                <form method="POST" action="">
+                                <form method="POST" action="" id="formCadastro">
                                     <div class="mb-3">
                                         <label for="txtEmail" class="form-label estilo-label">E-mail:</label>
-                                        <input type="email" class="form-control" id="txtEmail" name="email" required>
+                                        <input type="email" class="form-control" id="txtEmail" name="email" required placeholder="Digite um e-mail valido.">
                                     </div>
                                     
                                     <div class="mb-3">
                                         <label for="txtNome" class="form-label estilo-label">Nome da Instituição:</label>
-                                        <input type="text" class="form-control" id="txtNome" name="nome" required>
+                                        <input type="text" class="form-control" id="txtNome" name="nome" required placeholder="Digite o nome da instituição por extenso, sem abreviações.">
                                     </div>
                                     
                                     <div class="mb-3">
@@ -168,7 +196,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                                     
                                     <div class="mb-3">
                                         <label for="txtCep" class="form-label estilo-label">CEP:</label>
-                                        <input type="text" class="form-control" id="txtCep" placeholder="" maxlength="9" name="cep" required>
+                                        <input type="text" class="form-control" id="txtCep" placeholder="XXXXX-XXX" maxlength="9" name="cep" required>
                                     </div>
                                     
                                     <div class="mb-3 text-center">
@@ -202,7 +230,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
 
                                     <div class="mb-3">
                                         <label for="txtCNES" class="form-label estilo-label">Registro CNES(Cadastro Nacional de Estabelecimentos de Saúde):</label>
-                                        <input type="text" class="form-control" id="txtCNES" name="CNES" placeholder="" maxlength="7" required>
+                                        <input type="text" class="form-control" id="txtCNES" name="CNES" placeholder="XXXXXXX" maxlength="7" required>
                                     </div>
 
                                     <div class="mb-3">
@@ -221,12 +249,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                                         <label class="form-check-label text-white fw-bold " for="chkMostrar">Mostrar senhas</label>
                                     </div>
                                     
-                                    <div class="mb-2">
+                                    <div class="mb-2 text-center">
                                         <a href="Login.php" class="text-center text-decoration-underline">Possui login?</a>
                                     </div>
 
                                     <div class="text-center mt-3">
-                                        <button type="submit" id="btnCadastrar" name="btnCadastrar" class="btn btn-success btn-lg w-100 mb-2" disabled>Cadastrar</button>
+                                        <button type="submit" id="btnCadastrar" name="btnCadastrar" class="btn btn-success btn-lg w-100 mb-2 position-relative" disabled>
+                                            <span class="texto-botao">Cadastrar</span>
+                                            <span class="spinner"></span>
+                                        </button>
                                         <button type="reset" class="btn btn-danger btn-lg w-100">Cancelar</button>
                                     </div>
                                 </form>
@@ -371,6 +402,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
 
                 elemento.value = valor;
             }
+        </script>
+        
+        <script>
+        const formCadastro = document.getElementById("formCadastro");
+        const botaosalvar = document.getElementById("btnCadastrar"); // Captura o ID correto
+            
+        formCadastro.addEventListener("submit", function(e) {
+            // 1. Ativa a classe de carregamento visual
+            botaosalvar.classList.add("ativo");
+            
+            // 2. Desabilita o clique logo em seguida
+            setTimeout(function() {
+                botaosalvar.disabled = true;
+            }, 10);
+        });
         </script>
     </body>
 </html>
