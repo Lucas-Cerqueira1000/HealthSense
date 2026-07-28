@@ -3,6 +3,7 @@
     <head>
         <title>Home</title>
         <meta charset="utf-8" />
+        <link rel="icon" href="img/X.png">
         <meta
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
@@ -393,19 +394,43 @@ html
   }
 }
 
-/* Classe utilitária para aplicar nos textos */
-.texto-revelar {
-  /* Garante que o efeito funcione sem quebrar o layout */
-  display: inline-block; 
-  width: 100%;
-  
-  /* Conecta a animação ao scroll */
-  animation: revelarTexto linear both;
-  animation-timeline: view();
-  
-  /* Controla quando a animação começa e termina na tela */
-  /* Começa quando o topo do elemento entra 20% na tela e termina quando chega a 60% */
-  animation-range: entry 20% cover 60%; 
+/* Animação de surgimento via Scroll */
+@keyframes surgir {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Regra aplicada para revelar no Scroll */
+.texto-revelar, #nosso_proposito, #historia, #FAQ {
+  /* Suporte para navegadores sem Scroll Timeline: mantém visível */
+  opacity: 1; 
+
+  /* Suporte moderno (Scroll-Driven Animation) */
+  @supports (animation-timeline: view()) {
+    opacity: 0;
+    animation: surgir linear both;
+    animation-timeline: view();
+    /* Começa quando o topo do elemento entra na tela (entry 0%) e termina em 40% */
+    animation-range: entry 0% cover 40%;
+  }
+}
+/* Estado inicial (escondido) */
+.revelar-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Estado visível (quando entra na tela) */
+.revelar-scroll.visivel {
+  opacity: 1;
+  transform: translateY(0);
 }
     </style>
     <body>
@@ -696,6 +721,26 @@ document.querySelector('.carousel-container').addEventListener('mouseleave', () 
     startTimer();
 });
 
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+  const elementos = document.querySelectorAll(".revelar-scroll, #nosso_proposito, #historia, #FAQ");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visivel");
+      }
+    });
+  }, {
+    threshold: 0.15 // Dispara quando 15% do elemento aparece na tela
+  });
+
+  elementos.forEach((el) => {
+    el.classList.add("revelar-scroll");
+    observer.observe(el);
+  });
+});
         </script>
     </body>
 </html>

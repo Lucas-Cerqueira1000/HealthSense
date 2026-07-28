@@ -40,6 +40,7 @@ try {
     <head>
         <title>Seus Dados</title>
         <meta charset="utf-8" />
+        <link rel="icon" href="img/X.png">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <link rel="stylesheet" href="https://cloudflare.com">
@@ -139,6 +140,7 @@ button.ativo .spinner {
                 </div>
                 <ul class="nav-links fs-3 text-center" id="links">
                     <li><a href="inicio.php" class="botoes1 fw-bold text-decoration-underline links">Início</a></li>
+                    <li><a href="Comprar.php" class="botoes1">Comprar Pulseira</a></li>
                     <li><a href="Medicos.php" class="botoes1">Médicos</a></li>
                     <li><a href="CadastrarMedicos" class="botoes1">Cadastrar Médicos</a></li>
                     <li><a href="DeletarMedicos.php" class="botoes1">Deletar Médicos</a></li>

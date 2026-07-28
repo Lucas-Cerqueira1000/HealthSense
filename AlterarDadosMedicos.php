@@ -4,6 +4,7 @@
         <title>Alterar Dados Médicos</title>
         <!-- Required meta tags -->
         <meta charset="utf-8" />
+        <link rel="icon" href="img/X.png">
         <meta
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
@@ -54,10 +55,11 @@
         <ul class="nav-links fs-3">
             <li><a href="Inicio.php" class="botoes1">Início</a></li>
             <!-- <li><a href="SeusDados.php">Seus dados</a></li> -->
+            <li><a href="Comprar.php" class="botoes1">Comprar Pulseira</a></li>
             <li><a href="Medicos.php" class="botoes1">Médicos</a></li>
             <li><a href="CadastrarMedicos" class="botoes1">Cadastrar Médicos</a></li>
             <li><a href="DeletarMedicos.php" class="botoes1">Deletar Médicos</a></li>
-            <li><a href="AlterarDadosMedicos.php" class="botoes1" class="fw-bold text-decoration-underline botoes1">Alterar Dados Médicos</a></li>
+            <li><a href="AlterarDadosMedicos.php" class="fw-bold text-decoration-underline botoes1">Alterar Dados Médicos</a></li>
             <a href="Index.html" class="botoes2">Deslogar</a>
         </ul>
         
