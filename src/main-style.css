@@ -309,13 +309,13 @@ input:checked + .slider:before {
 
 /* 2. O fundo da barra (onde a barra corre) */
 ::-webkit-scrollbar-track {
-  background: var(--bege);
+  background: var(--verde);
   border-radius: 8px;
 }
 
 /* 3. A barra que você arrasta (thumb) */
 ::-webkit-scrollbar-thumb {
-  background: var(--verde);
+  background: var(--bege);
   border-radius: 8px;
 }
 
