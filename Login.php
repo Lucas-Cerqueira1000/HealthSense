@@ -201,6 +201,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                 color: white;
                 font-weight: bold;
             }
+            #esqueceu
+            {
+                text-decoration: line-through;
+            }
         </style>
     </head>
     <body>
@@ -264,7 +268,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                                     </div>
                                     
                                     <a href="Cadastro.php" class="text-center text-decoration-underline fw-bold d-block mb-3">Não possui login?</a>
-                                    
+                                    <a href="Senha.php" id="esqueceu" class="text-center text-decoration-underline fw-bold d-block mb-3" onclick="return false;" >Esqueceu a senha?(Desativado)</a>
                                     <div class="text-center mt-3">
                                         <button type="submit" class="btn btn-success btn-lg w-100 mb-2 position-relative" id="btnEntrar">
                                             <span class="texto-botao">Entrar</span>

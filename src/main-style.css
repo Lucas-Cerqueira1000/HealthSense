@@ -144,7 +144,7 @@ footer {
     visibility: visible;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1930px) {
 
     .menu-toggle {
         display: block;
