@@ -37,17 +37,29 @@ header {
     max-width: 260px;
 }
 
+/* --- ALTERAÇÕES DE CENTRALIZAÇÃO DOS LINKS --- */
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 40px;
-    font-size: 1.3rem;
+    gap: 30px;
+    font-size: 1.1rem;
+    align-items: center;      /* Alinha verticalmente os links e botões */
+    justify-content: center; /* Centraliza os links no espaço disponível */
+    flex: 1;                 /* Ocupa o espaço central entre a logo e o switch */
+    margin: 0 20px;
+}
+
+.nav-links li {
+    display: flex;
+    align-items: center;
+    text-align: center;
 }
 
 .nav-links a {
     text-decoration: none;
     color: white;
     transition: 0.3s;
+    display: inline-block;
 }
 
 .nav-links a:hover {
@@ -144,7 +156,7 @@ footer {
     visibility: visible;
 }
 
-@media (max-width: 1930px) {
+@media (max-width: 1300px) {
 
     .menu-toggle {
         display: block;
@@ -161,10 +173,11 @@ footer {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 50px;
-        font-size: 1.5rem;
+        gap: 30px;
+        font-size: 1.3rem;
         transition: 0.4s ease;
         z-index: 1000;
+        margin: 0;
     }
 
     .nav-links.active {
@@ -186,68 +199,60 @@ footer {
         max-width: 180px;
     }
 }
+
 /* 1. Definir a animação */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px); /* Começa um pouco abaixo */
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
-    transform: translateY(0); /* Termina na posição original */
+    transform: translateY(0);
   }
 }
 
 /* 2. Aplicar a animação na imagem */
-#logo, #logo1, h1, .faq-container{
-  animation: fadeIn 1.5s ease-in-out forwards;
+#logo, #logo1, h1, .faq-container {
+    animation: fadeIn 1.5s ease-in-out forwards;
 }
-#prints, .faq-container, #faq, .faq-item, .faq-question, .faq-answer
-{
+
+#prints, .faq-container, #faq, .faq-item, .faq-question, .faq-answer {
     animation: fadeIn 1.7s ease-in-out forwards;
 }
 
 /* Estilos do modo escuro */
 
-/* Ajuste nas variáveis principais */
 :root {
     --verde: #141c16;
-    --bege: #fff3df; /* Cor do modo claro */
+    --bege: #fff3df; 
     --text-color: #333;
     --accent-color: #3498db;
 }
 
-/* Quando o modo escuro estiver ativo */
 body.dark-theme {
-    --bege: #202020;   /* O Bege agora vira cinza escuro */
+    --bege: #202020;
     --text-color: #f4f4f9;
     --accent-color: var(--bege);
 }
-footer.dark-theme
-{
-    
-}
-/* O Main deve usar a variável que muda */
+
 main {
     flex: 1;
-    background-color: var(--bege); /* Esta variável agora é dinâmica */
+    background-color: var(--bege);
     color: var(--text-color);
     display: flex;
-    flex-direction: column; /* Para alinhar o switch e a logo verticalmente */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 40px;
     transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* Ajuste no rótulo do modo para aparecer sobre o fundo */
 #mode-label {
     color: var(--text-color);
     font-weight: bold;
 }
 
-/* Mantenha o restante do estilo do Switch (slider, round, etc) que você já tem */
-/* Estilo do Botão (Switch) */
 .theme-switch-wrapper {
     display: flex;
     align-items: center;
@@ -287,10 +292,8 @@ main {
     transition: .4s;
     width: 26px;
     border-radius: 50%;
-    /* border: 20px; */
 }
 
-/* Cor de destaque quando o checkbox está marcado */
 input:checked + .slider {
     background-color: var(--accent-color);
 }
@@ -299,84 +302,66 @@ input:checked + .slider:before {
     transform: translateX(26px);
 }
 
-/* Estilos da barra de navegação */
-
-/* 1. Largura da barra de navegação vertical */
 ::-webkit-scrollbar {
   width: 12px;
   height: 12px;
 }
 
-/* 2. O fundo da barra (onde a barra corre) */
 ::-webkit-scrollbar-track {
   background: var(--verde);
   border-radius: 8px;
 }
 
-/* 3. A barra que você arrasta (thumb) */
 ::-webkit-scrollbar-thumb {
   background: var(--bege);
   border-radius: 8px;
 }
 
-/* 4. Efeito ao passar o mouse por cima da barra */
 ::-webkit-scrollbar-thumb:hover {
   background: var(--verdeescuro);
 }
-#nossoprojeto, #btnvoltar
-{
+
+#nossoprojeto, #btnvoltar {
     animation: fadeIn 1s ease-in-out forwards;
-    /* Define as regras de como a animação deve se comportar */
-    @keyframes fadeIn {
-        from {
-            opacity: 0; /* Começa invisível */
-        }
-        to {
-            opacity: 1; /* Termina totalmente visível */
-        }
-    }
 }
-.botoes
-{
+
+.botoes {
     background-color: var(--verdeescuro);
     border-radius: 10px;
     padding: 10px;
 }
-.botoes1
-{
+
+.botoes1 {
     background-color: #518b89;
     border-radius: 10px;
     padding: 10px;
     color: black;
-    /* white-space: nowrap; */
 }
-@media(min-width: 1925px)
-{
-    .botoes1
-    {
-        white-space: nowrap
+
+@media(min-width: 1925px) {
+    .botoes1 {
+        white-space: nowrap;
     }
 }
-#contato1:hover, #entre:hover, #inicio:hover
-{
-color: #f3705b;
+
+#contato1:hover, #entre:hover, #inicio:hover {
+    color: #f3705b;
 }
-html
-{
+
+html {
     scroll-behavior: smooth;
 }
-.botoes2
-{
+
+/* --- AJUSTE NOS BOTOES ESPECIAIS --- */
+.botoes2 {
     background-color: #9b0000;
     border-radius: 10px;
-    padding: 6px;
-    position: relative;
-    top: -5px;
+    padding: 8px 12px;
+    /* Removido o top: -5px para manter alinhamento vertical perfeito */
 }
-@media(max-width: 1925px)
-{
-    .botoes1, .botoes2
-    {
+
+@media(max-width: 1925px) {
+    .botoes1, .botoes2 {
         background-color: transparent;
     }
 }
