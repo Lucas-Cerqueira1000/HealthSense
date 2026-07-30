@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="pt-br">
     <head>
-        <title>Home</title>
+        <title>Página Inicial</title>
         <meta charset="utf-8" />
         <link rel="icon" href="img/X.png">
         <meta
@@ -434,6 +434,16 @@ html
 }
     </style>
     <body>
+         <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
         <p id="texto">Voltar ao topo.</p>
     <button id="btn-topo" class="oculto">↑</button>
         <header>
@@ -472,6 +482,18 @@ html
                  <!-- <p class="text-center container" id="nossoprojeto">Nosso projeto é sobre uma pulseira inteligente capaz de monitorar os sinais vitais do paciente com um aplicativo que relata o diagnóstico dele para os profissionais de saúde com antecedência e, se houver alguma instabilidade, alerta todos os responsáveis técnicos do setor. O app será apenas disponibilizado para as empresas hospitalares (públicas) sobre um contrato, e será instalado pelos técnicos enviados pela empresa para instalar o programa em todo sistema do hospital. Assim conectando o sistema de banco de dados do hospital ao aplicativo para evitar, ao máximo, falhas de atraso ou extravio de dados sobre os pacientes, esse app terá um alarme e monitoramento de pacientes e, quando há alguma ocorrência, o app congela em uma tela de emergência e só retornará automaticamente ao seu modo tradicional quando o paciente for estabilizado.</p> -->
                   <p class="text-center container texto-revelar" id="nossoprojeto">Nosso projeto é sobre uma pulseira inteligente capaz de monitorar os sinais vitais do paciente com um aplicativo que relata o diagnóstico dele para os profissionais de saúde com antecedência e, se houver alguma instabilidade, alerta todos os responsáveis técnicos do setor. O app será apenas disponibilizado para as empresas hospitalares (públicas) sobre um contrato. Ele será conectado ao sistema de banco de dados do hospital para evitar, ao máximo, falhas de atraso ou extravio de dados sobre os pacientes.</p>
             </section>
+            <div>
+	  <button onclick="document.getElementById('player').play()" class="btn btn-success">Play</button>
+	  <button onclick="document.getElementById('player').pause()" class="btn btn-danger">Pause</button>
+	  <button onclick="document.getElementById('player').volume+=0.1" class="btn btn-info">Aumentar volume</button>
+	  <button onclick="document.getElementById('player').volume-=0.1" class="btn btn-warning">Diminuir volume</button>
+	</div>
+    <br>
+	<audio id="player" autoplay="autoplay" controls="controls">
+	  <source src="audio/Teste.mp3" type="audio/mp3" />
+	  seu navegador não suporta audio
+	</audio>
+    <br><br>
              <h1 class="text-center fw-bold">Prints do nosso APP:</h1>
             <section id="prints" class="text-center container">
 
@@ -505,10 +527,23 @@ html
                 <h1 class="text-center m-4">A Nossa História</h1>   
                  <p class="text-center container" id="nossoprojeto">A principal motivação inicial por trás do nosso projeto de TCC para a Escola Técnica Estadual Lauro Gomes foi o aprimoramento de qualidade dos atendimentos médicos no Brasil, especialmente em hospitais públicos.</p>
             </section>
+            
             <section id="prints" class="text-center container">
                  <img src="img/hospital.jpg" class="img-fluid rounded img-thumbnail shadow" alt="Imagem de um hospital genérico" height="300px" width="300px">
                  <img src="img/etec-sao-bernardo.jpg" class="img-fluid rounded img-thumbnail shadow" alt="Imagem da entrada da escola técnica estadual lauro gomes" height="300px" width="500px">
             </section>
+            <br><br>
+                        <div>
+	  <button onclick="document.getElementById('player1').play()" class="btn btn-success">Play</button>
+	  <button onclick="document.getElementById('player1').pause()" class="btn btn-danger">Pause</button>
+	  <button onclick="document.getElementById('player1').volume+=0.1" class="btn btn-info">Aumentar volume</button>
+	  <button onclick="document.getElementById('player1').volume-=0.1" class="btn btn-warning">Diminuir volume</button>
+	</div>
+    <br>
+	<audio id="player1" autoplay="autoplay" controls="controls">
+	  <source src="audio/Teste.mp3" type="audio/mp3" />
+	  seu navegador não suporta audio
+	</audio>
             <section id="nosso_proposito">
                     <h1 class="text-center m-4">O Nosso Propósito</h1>   
                      <p class="text-center container" id="nossoprojeto">Nosso principal propósito é contruibuir com as ODS a fim de tornar o mundo um logar melhor, transformar os hospitais públicos com tecnologia custo-benefício e aplicações reais em momentos requeridos.</p>
@@ -518,6 +553,18 @@ html
                      <img src="img/ods9.webp" class="img-fluid rounded img-thumbnail shadow" alt="imagem da ods(Objetivos de desenvolvimento sustentaveis) 9 - Indústria, inovação e infraestruturas" height="300px" width="300px">
                      <img src="img/ods10.webp" class="img-fluid rounded img-thumbnail shadow" alt="imagem da ods(Objetivos de desenvolvimento sustentaveis) 10 - reduzir as desigualdades" height="300px" width="300px">
             </section>
+            <br>
+                        <div>
+	  <button onclick="document.getElementById('player2').play()" class="btn btn-success">Play</button>
+	  <button onclick="document.getElementById('player2').pause()" class="btn btn-danger">Pause</button>
+	  <button onclick="document.getElementById('player2').volume+=0.1" class="btn btn-info">Aumentar volume</button>
+	  <button onclick="document.getElementById('player2').volume-=0.1" class="btn btn-warning">Diminuir volume</button>
+	</div>
+    <br>
+	<audio id="player2" autoplay="autoplay" controls="controls">
+	  <source src="audio/Teste.mp3" type="audio/mp3" />
+	  seu navegador não suporta audio
+	</audio>
             <br><br>
             <section id="equipe">
                 <h1 class="text-center m-4">Nossa Equipe</h1>   
@@ -550,6 +597,19 @@ html
                     <button class="next" onclick="nextSlide()">&#10095;</button>
                 </div>
             </section>
+<br>
+    <div>
+	  <button onclick="document.getElementById('player3').play()" class="btn btn-success">Play</button>
+	  <button onclick="document.getElementById('player3').pause()" class="btn btn-danger">Pause</button>
+	  <button onclick="document.getElementById('player3').volume+=0.1" class="btn btn-info">Aumentar volume</button>
+	  <button onclick="document.getElementById('player3').volume-=0.1" class="btn btn-warning">Diminuir volume</button>
+	</div>
+    <br>
+	<audio id="player3" autoplay="autoplay" controls="controls">
+	  <source src="audio/Teste.mp3" type="audio/mp3" />
+	  seu navegador não suporta audio
+	</audio>
+
             <br>
             <h1 class="text-center fw-bold">Veja o nosso produto</h1>
             <section id="modelo">
@@ -613,6 +673,18 @@ html
                     </div>
                 </details>
             </section>
+            <br>
+     <div>
+	  <button onclick="document.getElementById('player4').play()" class="btn btn-success">Play</button>
+	  <button onclick="document.getElementById('player4').pause()" class="btn btn-danger">Pause</button>
+	  <button onclick="document.getElementById('player4').volume+=0.1" class="btn btn-info">Aumentar volume</button>
+	  <button onclick="document.getElementById('player4').volume-=0.1" class="btn btn-warning">Diminuir volume</button>
+	</div>
+    <br>
+	<audio id="player4" autoplay="autoplay" controls="controls">
+	  <source src="audio/Teste.mp3" type="audio/mp3" />
+	  seu navegador não suporta audio
+	</audio>
             <br><br><br><br><br>
         </main>
         <footer class="mt-auto container-fluid vw-100 text-center">
