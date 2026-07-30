@@ -40,7 +40,7 @@ try {
     <head>
         <title>Seus Dados</title>
         <meta charset="utf-8" />
-        <link rel="icon" href="img/X.png">
+        <link rel="icon" href="img/logo1.png">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <link rel="stylesheet" href="https://cloudflare.com">

@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 <!doctype html>
 <html lang="pt-br">
     <head>
-        <link rel="icon" href="img/X.png">
+        <link rel="icon" href="img/logo1.png">
         <title>Formulário de Login</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />

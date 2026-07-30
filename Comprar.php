@@ -41,7 +41,7 @@ try {
         <title>Comprar Produto</title>
         <!-- Required meta tags -->
         <meta charset="utf-8" />
-        <link rel="icon" href="img/X.png">
+        <link rel="icon" href="img/logo1.png">
         <meta
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
@@ -221,7 +221,7 @@ try {
             <h1></h1>
 
             <section id="produto">
-                <h1 class="text-center m-4">Nossa Produto</h1>   
+                <h1 class="text-center m-4">Nosso Produto</h1>   
                 <p class="text-center container" id="produto">Este produto foi totalmente desenvolvido em território nacional e com uma combinação de programação em C++ e a utilização do <i>software</i> Arduino.</p>
                 
                 <div class="carousel-container">
@@ -255,10 +255,30 @@ try {
             <section class="text-center" id="prints">
                 <div class="text-center">
                     <figure class="text-center">
-                        <img src="img/5.png" class="img-fluid rounded img-thumbnail shadow text-center" alt="Tela de entrada do médico." height="400px" width="430px">
-                        <figcaption class="fw-bold">Tela de entrada do médico.</figcaption>
+                        <img src="img/6.png" class="img-fluid rounded img-thumbnail shadow text-center" alt="Tela de entrada do médico." height="400px" width="430px">
+                        <figcaption class="fw-bold">Tela de SOS do médico.</figcaption>
                     </figure>
                 </div>
+            </section>
+            <section id="tecnicas" class="container">
+                <h1 class="text-center">Especifiçãoes Técnicas</h1>
+                <!-- <h4 class="text-center">Especificações Físicas</h4> -->
+                <table>
+                 <tr>
+                   <th>Característica</th>
+                   <th>Especificação</th>
+                 </tr>
+                 <tr>
+                   <td>Modelo</td>
+                   <td>Maria Anders</td>
+                   <td>Germany</td>
+                 </tr>
+                 <tr>
+                   <td>Centro comercial Moctezuma</td>
+                   <td>Francisco Chang</td>
+                   <td>Mexico</td>
+                 </tr>
+                </table>
             </section>
         </section>   
         <div class="my-5 py-3"></div>

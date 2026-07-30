@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
     <head>
         <title>Formulário Cadastro Hospitais</title>
         <meta charset="utf-8" />
-        <link rel="icon" href="img/X.png">
+        <link rel="icon" href="img/logo1.png">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
