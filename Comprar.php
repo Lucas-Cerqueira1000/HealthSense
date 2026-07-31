@@ -180,6 +180,7 @@ try {
 {
     font-size: 20px;
 }
+
     </style>
     <body>
         <header>
@@ -263,22 +264,212 @@ try {
             <section id="tecnicas" class="container">
                 <h1 class="text-center">Especifiçãoes Técnicas</h1>
                 <!-- <h4 class="text-center">Especificações Físicas</h4> -->
-                <table>
-                 <tr>
-                   <th>Característica</th>
-                   <th>Especificação</th>
-                 </tr>
-                 <tr>
-                   <td>Modelo</td>
-                   <td>Maria Anders</td>
-                   <td>Germany</td>
-                 </tr>
-                 <tr>
-                   <td>Centro comercial Moctezuma</td>
-                   <td>Francisco Chang</td>
-                   <td>Mexico</td>
-                 </tr>
-                </table>
+            <table style="width:100%; border-collapse: collapse;">
+  <!-- <caption>Lista de Produtos em Estoque</caption> -->
+  <thead>
+    <tr style="background-color: var(--verdeescuro);" class="text-center">
+      <th style="border: 1px solid #ddd; padding: 8px;">Característica</th>
+      <th style="border: 1px solid #ddd; padding: 8px;">Especificação</th>
+      <!-- <th style="border: 1px solid #ddd; padding: 8px;">Categoria</th>
+      <th style="border: 1px solid #ddd; padding: 8px;">Preço</th>
+      <th style="border: 1px solid #ddd; padding: 8px;">Estoque</th> -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #ddd; padding: 8px;">Modelo</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">HSEG-01</td>
+      <!-- <td style="border: 1px solid #ddd; padding: 8px;">Vestuário</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">R$ 49,90</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">120</td> -->
+    </tr>
+    <tr>
+      <td style="border: 1px solid #ddd; padding: 8px;">Material Externo</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">Polímero médico hipoalergênico</td>
+      <!-- <td style="border: 1px solid #ddd; padding: 8px;">Vestuário</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">R$ 119,90</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">85</td> -->
+    </tr>
+    <!-- Adicione mais linhas <tr> conforme necessário -->
+    <tr>
+      <td style="border: 1px solid #ddd; padding: 8px;">Cor</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">Branco Hospitalar</td>
+      <!-- <td style="border: 1px solid #ddd; padding: 8px;">Vestuário</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">R$ 119,90</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">85</td> -->
+    </tr>
+    <tr>
+      <td style="border: 1px solid #ddd; padding: 8px;">Acabamento</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">Antimicrobiano</td>
+      <!-- <td style="border: 1px solid #ddd; padding: 8px;">Vestuário</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">R$ 119,90</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">85</td> -->
+    </tr>
+    <tr>
+      <td style="border: 1px solid #ddd; padding: 8px;">Peso</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">38 gramas</td>
+      <!-- <td style="border: 1px solid #ddd; padding: 8px;">Vestuário</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">R$ 119,90</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">85</td> -->
+    </tr>
+    <tr>
+      <td style="border: 1px solid #ddd; padding: 8px;">Diâmetro Interno</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">65 milimetros</td>
+      <!-- <td style="border: 1px solid #ddd; padding: 8px;">Vestuário</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">R$ 119,90</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">85</td> -->
+    </tr>
+    <tr>
+      <td style="border: 1px solid #ddd; padding: 8px;">Espessura</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">18 milimetros</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #ddd; padding: 8px;">Resistência</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">IP68</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #ddd; padding: 8px;">Temperatura de Operação</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">-10°C a 60°C</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr style="background-color: var(--verdeescuro); color=transparent" class="text-center">
+      <td colspan="9" style="border: 1px solid #ddd; padding: 20px; text-align: right; height=30px;" ></td>
+      <!-- <td style="border: 1px solid #ddd; padding: 8px;">5</td> -->
+    </tr>
+  </tfoot>
+</table>
+<h1 class="text-center">Sensores Integrados</h1>
+<br><br>
+<h3>Sensor Cardiáco Óptico</h3>
+<ul class="list-disc list-inside text-white ms-4 my-3">
+  <li>Monitoramento contínuo da frequência cardíaca.</li>
+  <li>Faixa: 30 a 220 bpm.</li>
+  <li>Precisão: ± 1 bpm.</li>
+</ul>
+
+<h3>Sensor de Saturação (SpO₂)</h3>
+<ul class="list-disc list-inside text-white ms-4 my-3">
+  <li>Faixa: 70% a 100%.</li>
+  <li>Precisão: ± 2%.</li>
+</ul>
+
+<h3>Sensor de Temperatur Corporal</h3>
+<ul class="list-disc list-inside text-white ms-4 my-3">
+  <li>Faixa: 30°C a 45°C.</li>
+  <li>Precisão: ± 0,1°C.</li>
+</ul>
+
+<h3>Sensor de Movimento</h3>
+<ul class="list-disc list-inside text-white ms-4 my-3">
+  <li>Acelerômetro triaxial.</li>
+  <li>Detecção de quedas.</li>
+  <li>Detecção de inatividade prolongada.</li>
+</ul>
+
+<h3>Sensor de Posicionamento Interno</h3>
+<ul class="list-disc list-inside text-white ms-4 my-3">
+  <li>Rastreamento por beacons hospitalares.</li>
+  <li>Precisão de localização interna de até 2 metros.</li>
+</ul>
+<h1 class="text-center">Sistema de Alerta</h1>
+<h3>LED Inteligente Frontal</h3>
+<table style="width:100%; border-collapse: collapse;">
+  <!-- <caption>Lista de Produtos em Estoque</caption> -->
+  <thead>
+    <tr style="background-color: var(--verdeescuro);" class="text-center">
+      <th style="border: 1px solid #ddd; padding: 8px;">Cor</th>
+      <th style="border: 1px solid #ddd; padding: 8px;">Situação</th>
+      <!-- <th style="border: 1px solid #ddd; padding: 8px;">Categoria</th>
+      <th style="border: 1px solid #ddd; padding: 8px;">Preço</th>
+      <th style="border: 1px solid #ddd; padding: 8px;">Estoque</th> -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid #ddd; padding: 8px;">Verde</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">Parece estável</td>
+      <!-- <td style="border: 1px solid #ddd; padding: 8px;">Vestuário</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">R$ 49,90</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">120</td> -->
+    </tr>
+    <tr>
+      <td style="border: 1px solid #ddd; padding: 8px;">Amarelo</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">Necessita atenção</td>
+      <!-- <td style="border: 1px solid #ddd; padding: 8px;">Vestuário</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">R$ 119,90</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">85</td> -->
+    </tr>
+    <!-- Adicione mais linhas <tr> conforme necessário -->
+    <tr>
+      <td style="border: 1px solid #ddd; padding: 8px;">Vermelho</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">Emergência detectada</td>
+      <!-- <td style="border: 1px solid #ddd; padding: 8px;">Vestuário</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">R$ 119,90</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">85</td> -->
+    </tr>
+    <tr>
+      <td style="border: 1px solid #ddd; padding: 8px;">Azul</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">Conectado à central</td>
+      <!-- <td style="border: 1px solid #ddd; padding: 8px;">Vestuário</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">R$ 119,90</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">85</td> -->
+    </tr>
+    <tr>
+      <td style="border: 1px solid #ddd; padding: 8px;">Branco</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">Modo configuração</td>
+      <!-- <td style="border: 1px solid #ddd; padding: 8px;">Vestuário</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">R$ 119,90</td>
+      <td style="border: 1px solid #ddd; padding: 8px;">85</td> -->
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr style="background-color: var(--verdeescuro); color=transparent" class="text-center">
+      <td colspan="9" style="border: 1px solid #ddd; padding: 20px; text-align: right; height=30px;" ></td>
+      <!-- <td style="border: 1px solid #ddd; padding: 8px;">5</td> -->
+    </tr>
+  </tfoot>
+</table>
+<br>
+<h3>Vibração Tátil</h3>
+<ul class="list-disc list-inside text-white ms-4 my-3">
+  <li>Alertas sileciosos.</li>
+  <li>Confirmação de eventos.</li>
+  <li>Avisos de medicação.</li>
+</ul>
+<h3>Comunicação</h3>
+<ul class="list-disc list-inside text-white ms-4 my-3">
+<h5 class="fw-bold">Bluetooth</h5>
+  <li>Bluetooth 5.3 BLE.</li>
+<h5 class="fw-bold">Wi-Fi</h5>
+  <li>Wi-Fi 6.</li>
+<h5 class="fw-bold">NFC</h5>
+  <li>Identificação rápida do paciente.</li>
+<h5 class="fw-bold">Comunicação Proprietária HSN-Link</h5>
+<li>Alcance de até 500 metros em ambiente hospitalar.</li>
+</ul>
+<h1 class="text-center">Funcionalidades Clínicas</h1>
+<br>
+<h3>Monitoramento em Tempo Real</h3>
+<ul class="list-disc list-inside text-white ms-4 my-3">
+  <li>Frequência cardíaca.</li>
+  <li>Saturação de oxigênio.</li>
+  <li>Temperatura corporal.</li>
+  <li>Mobilidade do paciente.</li>
+</ul>
+
+<h3>Sistema SOS</h3>
+<ul class="list-disc list-inside text-white ms-4 my-3">
+  <li>Acionamento automático em situações críticas.</li>
+  <li>Acionamento manual pelo aplicativo.</li>
+  <li>Notificação simultânea para:</li>
+  <ul>
+
+      <li>Equipe médica.</li>
+      <li>Enfermagem.</li>
+      <li>Central de monitoramento.</li>
+    </ul>
+</ul>
             </section>
         </section>   
         <div class="my-5 py-3"></div>
