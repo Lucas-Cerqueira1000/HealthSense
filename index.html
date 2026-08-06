@@ -22,674 +22,623 @@
             integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
             crossorigin="anonymous"
         ></script>
-    
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
             integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
             crossorigin="anonymous"
-            ></script>
-
-            <link rel="stylesheet" href="src/main-style.css">
-    </head>
-    <style>
-        :root
-        {
-            --Roboto:(@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap'));
-        }
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-        #nossoprojeto
-        {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            font-size: 20px;
-            background-color: var(--verde);
-            padding: 40px;
-            color: white;
-            border-radius: 40px;
-            margin: 20px auto;
-            max-width: 90%;
-        }
-
-        #prints
-        {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            border-radius: 150px;
-        }
-        #redes
-        {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        #x, #facebook, #instagram
-        {
-            border-radius: 100px;
-        }
-        @media(max-width: 1000px)
-        {
-            #prints
+        ></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <link rel="stylesheet" href="src/main-style.css">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+            #nossoprojeto
             {
-                flex-direction: column;
+                display: flex;
+                justify-content: center;
                 align-items: center;
+                text-align: center;
+                font-size: 20px;
+                background-color: var(--verde);
+                padding: 40px;
+                color: white;
+                border-radius: 40px;
+                margin: 20px auto;
+                max-width: 90%;
             }
-            footer, main 
+
+            #prints, #telas
             {
-                top: 0;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                gap: 20px;
+                flex-wrap: wrap;
+                border-radius: 150px;
             }
-        }
+            #redes
+            {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+            #x, #facebook, #instagram
+            {
+                border-radius: 100px;
+            }
+            @media(max-width: 1000px)
+            {
+                #prints
+                {
+                    flex-direction: column;
+                    align-items: center;
+                }
+                footer, main 
+                {
+                    top: 0;
+                }
+            }
+            /* ESTILOS DO FAQ */
+            .faq-container 
+            {
+                max-width: 800px; 
+                width: 90%; 
+                background: var(--verde);
+                padding: 30px;
+                display: flex;
+                flex-direction: column; 
+                margin: 40px auto; 
+                border-radius: 12px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            }
+            h2 {
+                text-align: center;
+                color: white;
+                margin-bottom: 8px;
+            }
+            .faq-subtitle {
+                text-align: center;
+                color: #ffffff;
+                font-size: 0.95rem;
+                margin-bottom: 25px;
+            }
+            .faq-item {
+                border: 1px solid var(--bege, rgba(255, 255, 255, 0.3));
+                border-radius: 8px;
+                margin-bottom: 12px;
+                overflow: hidden;
+                transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            }
+            .faq-item[open] {
+                border-color: var(--bege, rgba(255, 255, 255, 0.5));
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            }
+            .faq-question {
+                padding: 18px 20px;
+                color: white;
+                font-weight: 600;
+                cursor: pointer;
+                list-style: none; 
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background-color: var(--verdeescuro);
+                user-select: none;
+                transition: background-color 0.3s ease;
+            }
+            .faq-question::-webkit-details-marker {
+                display: none;
+            }
+            .faq-question::after {
+                content: '❯';
+                font-size: 1.1rem;
+                color: #ffffff;
+                display: inline-block;
+                transition: transform 0.35s ease;
+            }
+            .faq-item[open] .faq-question::after {
+                transform: rotate(90deg);
+            }
+            .faq-answer {
+                display: grid;
+                grid-template-rows: 0fr;
+                transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+                background-color: var(--verdeescuro);
+            }
+            .faq-item[open] .faq-answer {
+                grid-template-rows: 1fr;
+            }
+            .faq-answer-content {
+                overflow: hidden;
+                padding: 0 20px;
+                color: white;
+                line-height: 1.6;
+                font-size: 0.95rem;
+                transition: padding 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .faq-item[open] .faq-answer-content {
+                padding: 16px 20px;
+                border-top: 1px solid rgba(255, 255, 255, 0.2);
+            }
+            @media(max-width: 640px) {
+                .faq-container {
+                    padding: 15px; 
+                }
+                .faq-question {
+                    font-size: 0.95rem; 
+                }
+            }
+            body
+            {
+                display: flex;
+            }
+            main
+            {
+                display: flex;
+                flex-direction: column;
+            }
+            #btn-topo {
+                position: fixed;
+                bottom: 40px;
+                right: 40px;
+                z-index: 999;
+                padding: 25px;
+                border-radius: 50rem;
+                cursor: pointer;
+                transition: opacity 0.3s ease;
+                background-color: var(--verdeescuro);
+                color: white;
+            }
+            #texto
+            {
+                position: fixed;
+                display: none;
+                right: 100px;
+                top: 1215px;
+                cursor: pointer;
+                transition: opacity 0.3s ease;
+                background-color: transparent;
+                color: rgb(0, 0, 0);
+            }
+            .oculto 
+            {
+                opacity: 0;
+                pointer-events: none; 
+            }
+            @keyframes surgir 
+            {
+              0% 
+              {
+                opacity: 0;
+                transform: translateY(50px); 
+              }
+              100% 
+              {
+                opacity: 1;
+                transform: translateY(0);
+              }
+            }
+            #nosso_proposito, #historia, #FAQ
+            {
+              opacity: 0; 
+              animation: surgir ease-out forwards;
+              animation-timeline: view(); 
+              animation-range: entry 10% cover 40%;
+            }
+            model-viewer
+            {
+                width: 100%;
+                height: 100%;
+                background-color: var(--verde);
+            }
+            #modelo
+            {
+                background-color: var(--verde);
+                border-radius: 40px;
+                width: 700px;
+                height: 550px;
+                cursor: pointer;
+                margin: 0 auto;
+                overflow: hidden;
+            }
+            #produto
+            {
+                width: 100%;
+                height: 100%;
+            }
+            @media(max-width: 720px) {
+                #modelo {
+                    width: 90%;
+                    height: 400px;
+                }
+            }
+            @media(max-width: 520px) {
+                #modelo {
+                    height: 300px;
+                }
+            }
+            @media(max-width: 420px) {
+                #modelo {
+                    height: 250px;
+                }
+                #FAQ, .faq-container {
+                    position: static; 
+                }
+            }
+            html
+            {
+                scroll-behavior: smooth;
+            }
 
-.faq-container 
-{
-    max-width: 800px; 
-    width: 90%; 
-    background: var(--verde);
-    padding: 30px;
-    display: flex;
-    flex-direction: column; 
-    margin: 40px auto; 
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-}
-@media(max-width: 640px) {
-    .faq-container {
-        padding: 15px; 
-    }
-    .faq-question {
-        font-size: 0.95rem; 
-    }
-}
-.faq-item[open] .faq-answer {
-    animation: fadeIn 0.4s ease-out;
-}
+            /* CARROSSEL CUSTOMIZADO - REESTRUTURADO */
+            .carousel-container {
+                position: relative;
+                max-width: 600px;
+                width: 100%;
+                margin: 0 auto;
+                overflow: hidden; 
+                border-radius: 12px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+                background-color: #000;
+            }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-@media(max-width: 640px)
-{
-    .faq-container
-    {
-        transform: scale(0.7);
-    }
-}
-@media(max-width: 455px)
-{
-    .faq-container
-    {
-        transform: scale(0.6);
-    }
-}
-@media(max-width: 390px)
-{
-    .faq-container
-    {
-        transform: scale(0.5);
-    }
-}
-h2 {
-    text-align: center;
-    color: white;
-    margin-bottom: 8px;
-}
+            .carousel-slide {
+                display: flex;
+                transition: transform 0.5s ease-in-out;
+                width: 100%;
+            }
 
-.faq-subtitle {
-    text-align: center;
-    color: #ffffff;
-    font-size: 0.95rem;
-    margin-bottom: 30px;
-}
+            .custom-carousel-item {
+                min-width: 100%;
+                box-sizing: border-box;
+                position: relative;
+            }
 
-.faq-item {
-    border: 1px solid var(--bege);
-    border-radius: 8px;
-    margin-bottom: 12px;
-    overflow: hidden;
-    transition: all 0.8s ease;
-}
+            .custom-carousel-item img {
+                width: 100%;
+                height: auto;
+                max-height: 450px;
+                object-fit: contain;
+                display: block;
+                margin: 0 auto;
+            }
 
-.faq-item[open] {
-    border-color: var(--bege);
-    box-shadow: 0 2px 8px rgba(79, 70, 229, 0.1);
-}
+            .caption {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.7);
+                color: #f2f2f2;
+                text-align: center;
+                padding: 12px 15px;
+                font-size: 16px;
+                z-index: 2;
+            }
 
-.faq-question {
-    padding: 16px;
-    color: white;
-    font-weight: 600;
-    transition: 3s ease;
-    cursor: pointer;
-    border: white;
-    list-style: none; 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--verdeescuro);
-    user-select: none;
-}
+            .prev, .next {
+                cursor: pointer;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 45px;
+                height: 45px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-weight: bold;
+                font-size: 20px;
+                transition: 0.3s ease;
+                user-select: none;
+                background-color: rgba(0,0,0,0.5);
+                border: none;
+                border-radius: 50%;
+                z-index: 10;
+            }
 
-.faq-question::-webkit-details-marker {
-    display: none;
-}
+            .prev {
+                left: 10px;
+            }
 
-.faq-question::after {
-    content: '+';
-    font-size:  2.2rem;
-    color: #ffffff;
-    transition: transform 0.5s ease;
-}
+            .next {
+                right: 10px;
+            }
 
-.faq-item[open] .faq-question::after {
-    transform: rotate(135deg);
-    color: #ffffff;
-    border: var(--bege);
-}
+            .prev:hover, .next:hover {
+                background-color: rgba(0,0,0,0.9);
+            }
 
-.faq-answer {
-    padding: 0 16px 16px 16px;
-    background-color: var(--verdeescuro);
-    color: white;
-    line-height: 1.6;
-    font-size: 0.95rem;
-    border-top: 1px solid var(--bege);
-}
+            /* Animação de revelação */
+            @keyframes revelarTexto {
+              0% {
+                clip-path: inset(0 100% 0 0);
+              }
+              100% {
+                clip-path: inset(0 0 0 0);
+              }
+            }
+            .texto-revelar, #nosso_proposito, #historia, #FAQ {
+              opacity: 1; 
 
-body
-{
-    display: flex;
-}
-main
-{
-    display: flex;
-    flex-direction: column;
-}
-#btn-topo {
-    position: fixed;
-    bottom: 40px;
-    right: 40px;
-    z-index: 999;
-    padding: 25px;
-    border-radius: 50rem;
-    cursor: pointer;
-    transition: opacity 0.3s ease;
-    background-color: var(--verdeescuro);
-    color: white;
-}
-#texto
-{
-    position: fixed;
-    display: none;
-    right: 100px;
-    top: 1215px;
-    cursor: pointer;
-    transition: opacity 0.3s ease;
-    background-color: transparent;
-    color: rgb(0, 0, 0);
-}
-.oculto 
-{
-    opacity: 0;
-    pointer-events: none; 
-}
-
-@keyframes surgir 
-{
-  0% 
-  {
-    opacity: 0;
-    transform: translateY(50px); 
-  }
-  100% 
-  {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-#nosso_proposito, #historia, #FAQ
-{
-  opacity: 0; 
-  animation: surgir ease-out forwards;
-  animation-timeline: view(); 
-  animation-range: entry 10% cover 40%;
-}
-modal-viewer
-{
-    width: 100%;
-    height: 800px;
-    background-color: var(--verde);
-}
-#modelo
-{
-    background-color: var(--verde);
-    border-radius: 40px;
-    width: 700px;
-    height: 550px;
-    cursor: pointer;
-}
-#produto
-{
-    width: 700px;
-    height: 500px;
-    cursor: pointer;
-}
-@media(max-width: 720px) {
-    #modelo, #produto {
-        width: 90%;
-        height: 400px;
-    }
-}
-@media(max-width: 520px) {
-    #modelo, #produto {
-        height: 300px;
-    }
-}
-@media(max-width: 420px) {
-    #modelo, #produto {
-        height: 250px;
-    }
-    #FAQ, .faq-container {
-        position: static; 
-    }
-}
-html
-    {
-        scroll-behavior: smooth;
-    }
-
-/* ALTERAÇÕES DO CARROSSEL CUSTOMIZADO AQUI */
-.carousel-container {
-    position: relative;
-    max-width: 800px;
-    margin: auto;
-    overflow: hidden; 
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-
-.carousel-slide {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    width: 100%;
-}
-
-.custom-carousel-item {
-    min-width: 100%;
-    width: 100%;
-    position: relative;
-    display: block; 
-}
-
-.custom-carousel-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.caption {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    color: #f2f2f2;
-    text-align: center;
-    padding: 15px 0;
-    font-size: 18px;
-    z-index: 2;
-}
-
-.prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    padding: 16px;
-    margin-top: -35px;
-    color: white;
-    font-weight: bold;
-    font-size: 24px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-    background-color: rgba(0,0,0,0.4);
-    border: none;
-    z-index: 10;
-}
-
-.next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-}
-
-.prev:hover, .next:hover {
-    background-color: rgba(0,0,0,0.8);
-}
-@media(max-width: 845px)
-{
-    .carousel-container
-    {
-        transform: scale(0.8);
-    }
-}
-
-/*Animações de texto*/
-
-/* Animação de revelação da esquerda para a direita */
-@keyframes revelarTexto {
-  0% {
-    /* Esconde o texto completamente da esquerda para a direita */
-    clip-path: inset(0 100% 0 0);
-  }
-  100% {
-    /* Mostra o texto completamente */
-    clip-path: inset(0 0 0 0);
-  }
-}
-
-/* Animação de surgimento via Scroll */
-@keyframes surgir {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Regra aplicada para revelar no Scroll */
-.texto-revelar, #nosso_proposito, #historia, #FAQ {
-  /* Suporte para navegadores sem Scroll Timeline: mantém visível */
-  opacity: 1; 
-
-  /* Suporte moderno (Scroll-Driven Animation) */
-  @supports (animation-timeline: view()) {
-    opacity: 0;
-    animation: surgir linear both;
-    animation-timeline: view();
-    /* Começa quando o topo do elemento entra na tela (entry 0%) e termina em 40% */
-    animation-range: entry 0% cover 40%;
-  }
-}
-/* Estado inicial (escondido) */
-.revelar-scroll {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-/* Estado visível (quando entra na tela) */
-.revelar-scroll.visivel {
-  opacity: 1;
-  transform: translateY(0);
-}
-    </style>
+              @supports (animation-timeline: view()) {
+                opacity: 0;
+                animation: surgir linear both;
+                animation-timeline: view();
+                animation-range: entry 0% cover 40%;
+              }
+            }
+            .revelar-scroll {
+              opacity: 0;
+              transform: translateY(40px);
+              transition: opacity 0.8s ease, transform 0.8s ease;
+            }
+            .revelar-scroll.visivel {
+              opacity: 1;
+              transform: translateY(0);
+            }
+            /* Estilo dos Ícones de Áudio */
+            .icone-audio {
+                transition: transform 0.2s ease, color 0.2s ease;
+            }
+            .icone-audio:hover {
+                transform: scale(1.15);
+            }
+            @media(max-width: 420px)
+            {   
+                #telas
+                {
+                    width: -80vw;
+                }
+            }
+        </style>
+    </head>
     <body>
-         <div vw class="enabled">
-    <div vw-access-button class="active"></div>
-    <div vw-plugin-wrapper>
-      <div class="vw-plugin-top-wrapper"></div>
-    </div>
-  </div>
-  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-  <script>
-    new window.VLibras.Widget('https://vlibras.gov.br/app');
-  </script>
-        <p id="texto">Voltar ao topo.</p>
-    <button id="btn-topo" class="oculto">↑</button>
-        <header>
-      <nav class="navbar">
-        <div class="overlay"></div>
-        <div class="logo fs-3">
-            <img src="img/Logo.png" alt="" class="img-fluid ms-5" width="190px" height="150px" id="logo1">
-        </div>
-        <div class="theme-switch-wrapper">
-                <span id="mode-label" class="fw-bold text-white">Trocar Tema</span>
-                <label class="theme-switch" for="checkbox">
-                    <input type="checkbox" id="checkbox" />
-                    <div class="slider round"></div>
-                </label>
+        <div vw class="enabled">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
             </div>
-        <ul class="nav-links fs-3">
-            <li><a href="" class="fw-bold text-decoration-underline links" id="inicio">Início</a></li>
-            <li><a href="contato.php" class="botoes links" id="contato1">Contato</a></li>
-            <li><a href="login.php" class="botoes links" id="entre">Entre</a></li>
-        </ul>
-        
-
-        <div class="menu-toggle bg-" id="mobile-menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
         </div>
-    </nav>  
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+        <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
+        <p id="texto">Voltar ao topo.</p>
+        <button id="btn-topo" class="oculto">↑</button>
+        <header>
+            <nav class="navbar">
+                <div class="overlay"></div>
+                <div class="logo fs-3">
+                    <img src="img/Logo.png" alt="" class="img-fluid ms-5" width="190px" height="150px" id="logo1">
+                </div>
+                <div class="theme-switch-wrapper">
+                    <span id="mode-label" class="fw-bold text-white">Trocar Tema</span>
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <div class="slider round"></div>
+                    </label>
+                </div>
+                <ul class="nav-links fs-3">
+                    <li><a href="" class="fw-bold text-decoration-underline links" id="inicio">Início</a></li>
+                    <li><a href="contato.php" class="botoes links" id="contato1">Contato</a></li>
+                    <li><a href="login.php" class="botoes links" id="entre">Entre</a></li>
+                </ul>
+                <div class="menu-toggle bg-" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>  
         </header>
-        <main class="flex flex-col min-h-screen vw-100 p-0">
+      <main class="flex flex-col min-h-screen vw-100 p-0">
             <br>
-            <img src="img/teste7.png" class="img-fluid rounded mx-auto d-block " alt="logo do health sense" srcset="" height="400px" width="400px" class="container" id="logo">
+            <img src="img/teste7.png" class="img-fluid rounded mx-auto d-block" alt="logo do health sense" height="400px" width="400px" id="logo">
             <br>
             <section id="nosso_projeto">
                 <h1 class="text-center fw-bold texto-revelar">Sobre o nosso projeto</h1>
-                 <!-- <p class="text-center container" id="nossoprojeto">Nosso projeto é sobre uma pulseira inteligente capaz de monitorar os sinais vitais do paciente com um aplicativo que relata o diagnóstico dele para os profissionais de saúde com antecedência e, se houver alguma instabilidade, alerta todos os responsáveis técnicos do setor. O app será apenas disponibilizado para as empresas hospitalares (públicas) sobre um contrato, e será instalado pelos técnicos enviados pela empresa para instalar o programa em todo sistema do hospital. Assim conectando o sistema de banco de dados do hospital ao aplicativo para evitar, ao máximo, falhas de atraso ou extravio de dados sobre os pacientes, esse app terá um alarme e monitoramento de pacientes e, quando há alguma ocorrência, o app congela em uma tela de emergência e só retornará automaticamente ao seu modo tradicional quando o paciente for estabilizado.</p> -->
-                  <p class="text-center container texto-revelar" id="nossoprojeto">Nosso projeto é sobre uma pulseira inteligente capaz de monitorar os sinais vitais do paciente com um aplicativo que relata o diagnóstico dele para os profissionais de saúde com antecedência e, se houver alguma instabilidade, alerta todos os responsáveis técnicos do setor. O app será apenas disponibilizado para as empresas hospitalares (públicas) sobre um contrato. Ele será conectado ao sistema de banco de dados do hospital para evitar, ao máximo, falhas de atraso ou extravio de dados sobre os pacientes.</p>
+                <p class="text-center container texto-revelar" id="nossoprojeto">Nosso projeto é sobre uma pulseira inteligente capaz de monitorar os sinais vitais do paciente com um aplicativo que relata o diagnóstico dele para os profissionais de saúde com antecedência e, se houver alguma instabilidade, alerta todos os responsáveis técnicos do setor. O app será apenas disponibilizado para as empresas hospitalares (públicas) sobre um contrato. Ele será conectado ao sistema de banco de dados do hospital para evitar, ao máximo, falhas de atraso ou extravio de dados sobre os pacientes.</p>
             </section>
-            <div>
-	  <button onclick="document.getElementById('player').play()" class="btn btn-success">Play</button>
-	  <button onclick="document.getElementById('player').pause()" class="btn btn-danger">Pause</button>
-	  <button onclick="document.getElementById('player').volume+=0.1" class="btn btn-info">Aumentar volume</button>
-	  <button onclick="document.getElementById('player').volume-=0.1" class="btn btn-warning">Diminuir volume</button>
-	</div>
-    <br>
-	<audio id="player" autoplay="autoplay" controls="controls">
-	  <source src="audio/Sobre_Nosso_Projeto.mp3" type="audio/mp3" />
-	  seu navegador não suporta audio
-	</audio>
-    <br><br>
-             <h1 class="text-center fw-bold">Prints do nosso APP:</h1>
-            <section id="prints" class="text-center container">
-
-                <figure>
-                    <img src="img/EntrarMedico.png" class="img-fluid rounded img-thumbnail shadow" alt="Tela de entrada do médico." height="400px" width="430px">
-                    <figcaption class="fw-bold">Tela de entrada do médico.</figcaption>
-                </figure>
-
-                <figure>
-                    <img src="img/EntrarPaciente.png" class="img-fluid rounded img-thumbnail shadow" alt="Tela de entrada do paciente." height="400px" width="430px">
-                    <figcaption class="fw-bold">Tela de entrada do paciente.</figcaption>
-                </figure>
-
-                <figure>
-                    <img src="img/MainActivity.png" class="img-fluid rounded img-thumbnail shadow" alt="Tela inicial do aplicativo." height="400px" width="430px">
-                    <figcaption class="fw-bold">Tela inicial do aplicativo.</figcaption>
-                </figure>
-
-                <figure>
-                    <img src="img/HomeMedico.png" class="img-fluid rounded img-thumbnail shadow" alt="Tela do médico logado." height="400px" width="430px">
-                    <figcaption class="fw-bold">Tela do médico logado</figcaption>
-                </figure>
-
-                <figure>
-                    <img src="img/HomePaciente.png" class="img-fluid rounded img-thumbnail shadow" alt="Tela do paciente logado." height="400px" width="430px">
-                    <figcaption class="fw-bold">Tela do paciente logado.</figcaption>
-                </figure>
-                
+            <br>
+            <div class="text-center">
+                <i class="fa-solid fa-volume-high fs-3 icone-audio" style="cursor: pointer;" onclick="alternarAudio(this)"></i>
+                <audio>
+                    <source src="audio/Sobre_Nosso_Projeto.mp3" type="audio/mp3" />
+                    Seu navegador não suporta áudio.
+                </audio>
+            </div>
+            <br><br>
+            <h1 class="text-center fw-bold">Prints do nosso APP:</h1>
+            <section id="telas" class="text-center container">
+                <div class="card" style="width: 25rem;">
+                  <img class="card-img-top img-fluid rounded img-thumbnail" src="img/HomeMedico.png" alt="Card image cap">
+                  <div class="card-body">
+                    <p class="card-text fw-bold">Tela do médico logado.</p>
+                  </div>
+                </div>
+                <div class="card" style="width: 25rem;">
+                  <img class="card-img-top img-fluid rounded img-thumbnail" src="img/HomePaciente.png" alt="Card image cap">
+                  <div class="card-body">
+                    <p class="card-text fw-bold">Tela do paciente logado.</p>
+                  </div>
+                </div>
             </section>
             <section id="historia">
                 <h1 class="text-center m-4">A Nossa História</h1>   
-                 <p class="text-center container" id="nossoprojeto">A principal motivação inicial por trás do nosso projeto de TCC para a Escola Técnica Estadual Lauro Gomes foi o aprimoramento de qualidade dos atendimentos médicos no Brasil, especialmente em hospitais públicos.</p>
-            </section>
-            
+                <p class="text-center container" id="nossoprojeto">A principal motivação inicial por trás do nosso projeto de TCC para a Escola Técnica Estadual Lauro Gomes foi o aprimoramento de qualidade dos atendimentos médicos no Brasil, especialmente em hospitais públicos.</p>
+            </section>  
             <section id="prints" class="text-center container">
-                 <img src="img/hospital.jpg" class="img-fluid rounded img-thumbnail shadow" alt="Imagem de um hospital genérico" height="300px" width="300px">
-                 <img src="img/etec-sao-bernardo.jpg" class="img-fluid rounded img-thumbnail shadow" alt="Imagem da entrada da escola técnica estadual lauro gomes" height="300px" width="500px">
+                <img src="img/hospital.jpg" class="img-fluid rounded img-thumbnail shadow" alt="Imagem de um hospital genérico" height="300px" width="300px">
+                <img src="img/etec-sao-bernardo.jpg" class="img-fluid rounded img-thumbnail shadow" alt="Imagem da entrada da escola técnica estadual lauro gomes" height="300px" width="500px">
             </section>
             <br><br>
-                        <div>
-	  <button onclick="document.getElementById('player1').play()" class="btn btn-success">Play</button>
-	  <button onclick="document.getElementById('player1').pause()" class="btn btn-danger">Pause</button>
-	  <button onclick="document.getElementById('player1').volume+=0.1" class="btn btn-info">Aumentar volume</button>
-	  <button onclick="document.getElementById('player1').volume-=0.1" class="btn btn-warning">Diminuir volume</button>
-	</div>
-    <br>
-	<audio id="player1" autoplay="autoplay" controls="controls">
-	  <source src="audio/Nossa_Historia.mp3" type="audio/mp3" />
-	  seu navegador não suporta audio
-	</audio>
+            <div class="text-center">
+                <i class="fa-solid fa-volume-high fs-3 icone-audio" style="cursor: pointer;" onclick="alternarAudio(this)"></i>
+                <audio>
+                    <source src="audio/Nossa_Historia.mp3" type="audio/mp3" />
+                    Seu navegador não suporta áudio.
+                </audio>
+            </div>
+            
             <section id="nosso_proposito">
-                    <h1 class="text-center m-4">O Nosso Propósito</h1>   
-                     <p class="text-center container" id="nossoprojeto">Nosso principal propósito é contribuir com as ODS(Objetivos de Desenvolvimento Sustentável) a fim de tornar o mundo um lugar melhor, transformar os hospitais públicos com tecnologia custo-benefício e aplicações reais em momentos requeridos.</p>
+                <h1 class="text-center m-4">O Nosso Propósito</h1>   
+                <p class="text-center container" id="nossoprojeto">Nosso principal propósito é contribuir com as ODS(Objetivos de Desenvolvimento Sustentável) a fim de tornar o mundo um lugar melhor, transformar os hospitais públicos com tecnologia custo-benefício e aplicações reais em momentos requeridos.</p>
             </section>
-            <section id="prints" class="text-center container">
-                     <img src="img/ods3.webp" class="img-fluid rounded img-thumbnail shadow" alt="imagem da ods(Objetivos de desenvolvimento sustentaveis) 3 - saúde e bem-estar" height="300px" width="300px">
-                     <img src="img/ods9.webp" class="img-fluid rounded img-thumbnail shadow" alt="imagem da ods(Objetivos de desenvolvimento sustentaveis) 9 - Indústria, inovação e infraestruturas" height="300px" width="300px">
-                     <img src="img/ods10.webp" class="img-fluid rounded img-thumbnail shadow" alt="imagem da ods(Objetivos de desenvolvimento sustentaveis) 10 - reduzir as desigualdades" height="300px" width="300px">
+
+            <section id="proposito" class="text-center container">
+                <div class="carousel-container" id="carousel-ods">
+                    <div class="carousel-slide">
+                        <div class="custom-carousel-item">
+                            <img src="img/ods3.webp" alt="ODS 3 - Saúde e Bem-Estar" class="rounded shadow">
+                            <div class="caption">ODS 3: Saúde e Bem-Estar</div>
+                        </div>     
+                        <div class="custom-carousel-item">
+                            <img src="img/ods9.webp" alt="ODS 9 - Indústria, Inovação e Infraestrutura" class="rounded shadow">
+                            <div class="caption">ODS 9: Indústria, Inovação e Infraestrutura</div>
+                        </div>
+                        <div class="custom-carousel-item">
+                            <img src="img/ods10.webp" alt="ODS 10 - Redução das Desigualdades" class="rounded shadow">
+                            <div class="caption">ODS 10: Redução das Desigualdades</div>
+                        </div>
+                    </div>
+                    <button class="prev">&#10094;</button>
+                    <button class="next">&#10095;</button>
+                </div>
             </section>
             <br>
-                        <div>
-	  <button onclick="document.getElementById('player2').play()" class="btn btn-success">Play</button>
-	  <button onclick="document.getElementById('player2').pause()" class="btn btn-danger">Pause</button>
-	  <button onclick="document.getElementById('player2').volume+=0.1" class="btn btn-info">Aumentar volume</button>
-	  <button onclick="document.getElementById('player2').volume-=0.1" class="btn btn-warning">Diminuir volume</button>
-	</div>
-    <br>
-	<audio id="player2" autoplay="autoplay" controls="controls">
-	  <source src="audio/Nosso_Proposito.mp3" type="audio/mp3" />
-	  seu navegador não suporta audio
-	</audio>
+            <div class="text-center">
+                <i class="fa-solid fa-volume-high fs-3 icone-audio" style="cursor: pointer;" onclick="alternarAudio(this)"></i>
+                <audio>
+                    <source src="audio/Nosso_Proposito.mp3" type="audio/mp3" />
+                    Seu navegador não suporta áudio.
+                </audio>
+            </div>
             <br><br>
+
             <section id="equipe">
                 <h1 class="text-center m-4">Nossa Equipe</h1>   
                 <p class="text-center container" id="nossoprojeto">Para desenvolver esse projeto foi necessário o apoio de muitas pessoas, das quais, a equipe principal do projeto "Health Sense".</p>
                 
-                <div class="carousel-container">
+                <div class="carousel-container" id="carousel-equipe">
                     <div class="carousel-slide">
                         <div class="custom-carousel-item">
-                            <img src="img/10.png" alt="Descrição da Imagem 1" class="rounded img-thumbnail shadow">
+                            <img src="img/10.png" alt="Paulo" class="rounded shadow">
                             <div class="caption">Paulo, documentador do projeto.</div>
                         </div>
-                        
+                      
                         <div class="custom-carousel-item">
-                            <img src="img/11.png" alt="Descrição da Imagem 2" class="rounded img-thumbnail shadow">
+                            <img src="img/11.png" alt="Lucas" class="rounded shadow">
                             <div class="caption">Lucas, responsável pelo site.</div>
                         </div>
-
                         <div class="custom-carousel-item">
-                            <img src="img/12.jpg" alt="Descrição da Imagem 3" class="rounded img-thumbnail shadow">
+                            <img src="img/12.jpg" alt="Branca" class="rounded shadow">
                             <div class="caption">Branca, responsável pelo produto.</div>
                         </div>
-
                         <div class="custom-carousel-item">
-                            <img src="img/13.jpg" alt="Descrição da Imagem 4"class="rounded img-thumbnail shadow">
+                            <img src="img/13.jpg" alt="Antonio" class="rounded shadow">
                             <div class="caption">Antonio, programador Android.</div>
                         </div>
                     </div>
-
-                    <button class="prev" onclick="prevSlide()">&#10094;</button>
-                    <button class="next" onclick="nextSlide()">&#10095;</button>
+                    <button class="prev">&#10094;</button>
+                    <button class="next">&#10095;</button>
                 </div>
             </section>
-<br>
-    <div>
-	  <button onclick="document.getElementById('player3').play()" class="btn btn-success">Play</button>
-	  <button onclick="document.getElementById('player3').pause()" class="btn btn-danger">Pause</button>
-	  <button onclick="document.getElementById('player3').volume+=0.1" class="btn btn-info">Aumentar volume</button>
-	  <button onclick="document.getElementById('player3').volume-=0.1" class="btn btn-warning">Diminuir volume</button>
-	</div>
-    <br>
-	<audio id="player3" autoplay="autoplay" controls="controls">
-	  <source src="audio/Equipe.mp3" type="audio/mp3" />
-	  seu navegador não suporta audio
-	</audio>
-
+            <br>
+            <div class="text-center">
+                <i class="fa-solid fa-volume-high fs-3 icone-audio" style="cursor: pointer;" onclick="alternarAudio(this)"></i>
+                <audio>
+                    <source src="audio/Equipe.mp3" type="audio/mp3" />
+                    Seu navegador não suporta áudio.
+                </audio>
+            </div>
             <br>
             <h1 class="text-center fw-bold">Veja o nosso produto</h1>
+            <br>
             <section id="modelo">
                 <model-viewer 
-                src="Meshy_AI_Pulse_Ring_0616152056_texture.glb" 
-                alt="Uma descrição do seu modelo 3D para acessibilidade" 
-                auto-rotate 
-                camera-controls id="produto"
-                class="text-center">
+                    src="Meshy_AI_Pulse_Ring_0616152056_texture.glb" 
+                    alt="Modelo 3D da pulseira inteligente Health Sense" 
+                    auto-rotate 
+                    camera-controls 
+                    id="produto"
+                    class="text-center">
                 </model-viewer>
             </section><br>
+            <div class="text-center">
+                <i class="fa-solid fa-volume-high fs-3 icone-audio" style="cursor: pointer;" onclick="alternarAudio(this)"></i>
+                <audio>
+                    <source src="audio/3D.mp3" type="audio/mp3" />
+                    Seu navegador não suporta áudio.
+                </audio>
+            </div>
+            <br>
             <h4 class="text-center fw-bold">Modelo 3D gerado na ferramenta "MESHY AI".</h4>
             <section class="faq-container" id="FAQ">
                 <h2>Dúvidas Frequentes</h2>
-
+                <p class="faq-subtitle">Clique na pergunta para ver a resposta</p>
                 <details class="faq-item">
-                    <summary class="faq-question" onclick="oq()">O que é o nosso projeto?</summary>
+                    <summary class="faq-question">O que é o nosso projeto?</summary>
                     <div class="faq-answer">
-                        <br>
-                        <p>É uma pulseira que mede batimentos cardíacos a partir da corrente sanguínea.</p>
+                        <div class="faq-answer-content">
+                            <p>É uma pulseira que mede batimentos cardíacos a partir da corrente sanguínea.</p>
+                        </div>
                     </div>
                 </details>
-
                 <details class="faq-item">
                     <summary class="faq-question">A que instituições ele é destinado?</summary>
                     <div class="faq-answer">
-                        <br>
-                        <p>A instituições públicas de saúde.</p>
+                        <div class="faq-answer-content">
+                            <p>A instituições públicas de saúde.</p>
+                        </div>
                     </div>
                 </details>
-
                 <details class="faq-item">
                     <summary class="faq-question">Quanto custa o produto?</summary>
                     <div class="faq-answer">
-                        <br>
-                        <p>Nós não temos o produto finalizado, então ainda não temos um valor definido.</p>
+                        <div class="faq-answer-content">
+                            <p>Nós não temos o produto finalizado, então ainda não temos um valor definido.</p>
+                        </div>
                     </div>
                 </details>
-
-                 <details class="faq-item">
+                <details class="faq-item">
                     <summary class="faq-question">Existem riscos embutidos ao paciente que utilizar a pulseira?</summary>
                     <div class="faq-answer">
-                        <br>
-                        <p> Não, em sua versão final a pulseira será totalmente anti-alérgica e atóxica.</p>
+                        <div class="faq-answer-content">
+                            <p>Não, em sua versão final a pulseira será totalmente anti-alérgica e atóxica.</p>
+                        </div>
                     </div>
                 </details>
-
                 <details class="faq-item">
                     <summary class="faq-question">Como o médico utilizará a pulseira?</summary>
                     <div class="faq-answer">
-                        <br>
-                        <p> Ele visualizará em seu celular o eletrocardiograma do paciente e também poderá visualizar o alerta de "SOS" do paciente.</p>
+                        <div class="faq-answer-content">
+                            <p>Ele visualizará em seu celular o eletrocardiograma do paciente e também poderá visualizar o alerta de "SOS" do paciente.</p>
+                        </div>
                     </div>
                 </details>
-
                 <details class="faq-item">
                     <summary class="faq-question">Em caso de parada cardíaca, o médico responsável pelo paciente é avisado?</summary>
                     <div class="faq-answer">
-                        <br>
-                        <p>Sim, por meio de alertas visuais e sonoros no aplicativo.</p>
+                        <div class="faq-answer-content">
+                            <p>Sim, por meio de alertas visuais e sonoros no aplicativo.</p>
+                        </div>
                     </div>
                 </details>
             </section>
             <br>
-     <div>
-	  <button onclick="document.getElementById('player4').play()" class="btn btn-success">Play</button>
-	  <button onclick="document.getElementById('player4').pause()" class="btn btn-danger">Pause</button>
-	  <button onclick="document.getElementById('player4').volume+=0.1" class="btn btn-info">Aumentar volume</button>
-	  <button onclick="document.getElementById('player4').volume-=0.1" class="btn btn-warning">Diminuir volume</button>
-	</div>
-    <br>
-	<audio id="player4" autoplay="autoplay" controls="controls">
-	  <source src="audio/FAQ.mp3" type="audio/mp3" />
-	  seu navegador não suporta audio
-	</audio>
+            <div class="text-center">
+                <i class="fa-solid fa-volume-high fs-3 icone-audio" style="cursor: pointer;" onclick="alternarAudio(this)"></i>
+                <audio>
+                    <source src="audio/FAQ.mp3" type="audio/mp3" />
+                    Seu navegador não suporta áudio.
+                </audio>
+            </div>
             <br><br><br><br><br>
         </main>
         <footer class="mt-auto container-fluid vw-100 text-center">
-             <div class="text-center container">
-              <h3 class="text-center container" id="copy">&copy HealthSense Systems</h3>
+            <div class="text-center container">
+                <h3 class="text-center container" id="copy">&copy HealthSense Systems</h3>
                 <section id="redes" class="text-center container">
                     <a href="https://x.com/?lang=pt" target="_blank">    
                         <img src="img/X.png" class="img-fluid shadow" alt="imagem do X" height="60px" width="70px" id="x">
@@ -700,119 +649,159 @@ html
                     <a href="https://www.facebook.com/?locale=pt_BR" target="_blank">
                         <img src="img/Facebook.png" class="img-fluid shadow" alt="imagem do facebook" height="40px" width="70px" id="facebook">
                     </a>
-            </section>
-             </div>
+                </section>
+            </div>
         </footer>
         <script src="js/main-script.js"></script>
         <script src="js/scripts.js"></script>
+        <script src="js/audio.js"></script>
+        
+        <script>
+            document.querySelectorAll('.faq-item').forEach(details => {
+                const summary = details.querySelector('summary');
+
+                summary.addEventListener('click', (e) => {
+                    e.preventDefault(); 
+                    
+                    if (details.hasAttribute('open')) {
+                        details.removeAttribute('open');
+                    } else {
+                        details.setAttribute('open', '');
+                    }
+                });
+            });
+        </script>
+
         <script>
             const btnTopo = document.getElementById("btn-topo");
+            window.addEventListener("scroll", function() {
+                if (window.scrollY > 300) {
+                    btnTopo.classList.remove("oculto");
+                } else {
+                    btnTopo.classList.add("oculto");
+                }
+            });
+            btnTopo.addEventListener("click", function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            });
 
-window.addEventListener("scroll", function() {
-    if (window.scrollY > 300) {
-        btnTopo.classList.remove("oculto");
-    } else {
-        btnTopo.classList.add("oculto");
-    }
-});
+            // FUNÇÃO GENÉRICA DE CARROSSEL MULTI-INSTÂNCIA
+            function inicializarCarrossel(containerId) {
+                const container = document.getElementById(containerId);
+                if (!container) return;
 
-btnTopo.addEventListener("click", function() {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-});
+                const carouselSlide = container.querySelector(".carousel-slide");
+                const slides = container.querySelectorAll(".custom-carousel-item");
+                const prevBtn = container.querySelector(".prev");
+                const nextBtn = container.querySelector(".next");
 
-// ==========================================
-// CARROSSEL CORRIGIDO
-// ==========================================
-let slideIndex = 0;
-let timer = null;
+                let slideIndex = 0;
+                let timer = null;
 
-const carouselSlide = document.querySelector(".carousel-slide");
-const slides = document.querySelectorAll(".custom-carousel-item");
+                function showSlides(withTransition = true) {
+                    if (!carouselSlide || slides.length === 0) return;
 
-showSlides(false); // Inicializa sem transição
-startTimer(); 
+                    carouselSlide.style.transition = withTransition ? "transform 0.5s ease-in-out" : "none";
+                    let offset = -slideIndex * 100;
+                    carouselSlide.style.transform = `translateX(${offset}%)`;
+                }
 
-function startTimer() {
-    // Evita acumular múltiplos intervalos limpando antes de criar
-    if (timer) clearInterval(timer);
-    timer = setInterval(nextSlide, 4000); 
-}
+                function nextSlide() {
+                    slideIndex = (slideIndex + 1) % slides.length;
+                    showSlides(true);
+                }
 
-function nextSlide() {
-    slideIndex++;
-    // Se passar da última, vai para a primeira instantaneamente sem transição reversa
-    if (slideIndex >= slides.length) {
-        slideIndex = 0;
-        showSlides(false); 
-    } else {
-        showSlides(true);
-    }
-    resetTimer();
-}
+                function prevSlide() {
+                    slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+                    showSlides(true);
+                }
 
-function prevSlide() {
-    slideIndex--;
-    // Se for antes da primeira, vai para a última instantaneamente
-    if (slideIndex < 0) {
-        slideIndex = slides.length - 1;
-        showSlides(false);
-    } else {
-        showSlides(true);
-    }
-    resetTimer();
-}
+                function startTimer() {
+                    if (timer) clearInterval(timer);
+                    timer = setInterval(nextSlide, 4000);
+                }
 
-function showSlides(withTransition = true) {
-    if (!carouselSlide || slides.length === 0) return;
+                function resetTimer() {
+                    clearInterval(timer);
+                    startTimer();
+                }
 
-    // Controla se o efeito de deslizar deve acontecer ou não
-    if (withTransition) {
-        carouselSlide.style.transition = "transform 0.5s ease-in-out";
-    } else {
-        carouselSlide.style.transition = "none";
-    }
-    
-    let offset = -slideIndex * 100;
-    carouselSlide.style.transform = `translateX(${offset}%)`;
-}
+                if (nextBtn) {
+                    nextBtn.addEventListener('click', () => {
+                        nextSlide();
+                        resetTimer();
+                    });
+                }
 
-function resetTimer() {
-    clearInterval(timer);
-    startTimer();
-}
+                if (prevBtn) {
+                    prevBtn.addEventListener('click', () => {
+                        prevSlide();
+                        resetTimer();
+                    });
+                }
 
-// Controladores do Mouse protegidos contra múltiplos intervalos
-document.querySelector('.carousel-container').addEventListener('mouseenter', () => {
-    clearInterval(timer);
-});
+                container.addEventListener('mouseenter', () => clearInterval(timer));
+                container.addEventListener('mouseleave', () => startTimer());
 
-document.querySelector('.carousel-container').addEventListener('mouseleave', () => {
-    startTimer();
-});
+                showSlides(false);
+                startTimer();
+            }
 
+            // Inicializar ambos os carrosséis de forma independente
+            document.addEventListener("DOMContentLoaded", function () {
+                inicializarCarrossel("carousel-ods");
+                inicializarCarrossel("carousel-equipe");
+            });
         </script>
+
         <script>
             document.addEventListener("DOMContentLoaded", function () {
-  const elementos = document.querySelectorAll(".revelar-scroll, #nosso_proposito, #historia, #FAQ");
+                const elementos = document.querySelectorAll(".revelar-scroll, #nosso_proposito, #historia, #FAQ");
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visivel");
-      }
-    });
-  }, {
-    threshold: 0.15 // Dispara quando 15% do elemento aparece na tela
-  });
-
-  elementos.forEach((el) => {
-    el.classList.add("revelar-scroll");
-    observer.observe(el);
-  });
-});
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visivel");
+                        }
+                    });
+                }, {
+                    threshold: 0.15
+                });
+                elementos.forEach((el) => {
+                    el.classList.add("revelar-scroll");
+                    observer.observe(el);
+                });
+            });
+        </script>
+        <script>
+            function alternarAudio(icone) {
+                const audio = icone.nextElementSibling;
+                if (audio.paused) {
+                    document.querySelectorAll('audio').forEach(a => {
+                        if (a !== audio) {
+                            a.pause();
+                            if (a.previousElementSibling && a.previousElementSibling.classList) {
+                                a.previousElementSibling.classList.remove('fa-volume-xmark');
+                                a.previousElementSibling.classList.add('fa-volume-high');
+                            }
+                        }
+                    });
+                    audio.play();
+                    icone.classList.remove('fa-volume-high');
+                    icone.classList.add('fa-volume-xmark');
+                } else {
+                    audio.pause();
+                    icone.classList.remove('fa-volume-xmark');
+                    icone.classList.add('fa-volume-high');
+                }
+                audio.onended = function() {
+                    icone.classList.remove('fa-volume-xmark');
+                    icone.classList.add('fa-volume-high');
+                };
+            }
         </script>
     </body>
 </html>

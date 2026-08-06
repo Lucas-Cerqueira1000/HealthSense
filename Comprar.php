@@ -1,39 +1,39 @@
 <?php 
-// session_start();
+session_start();
 
-// if(!isset($_SESSION['usuario_id'])) {
-//     header("Location: login.php");
-//     exit;
-// }
+if(!isset($_SESSION['usuario_id'])) {
+    header("Location: login.php");
+    exit;
+}
 
-// // Configurações do Banco de Dados
-// $host = 'tcc_bd35.mysql.dbaas.com.br';
-// $dbname = 'tcc_bd35';
-// $username = 'tcc_bd35';
-// $password = 'ROSA123456a#';
+// Configurações do Banco de Dados
+$host = 'tcc_bd35.mysql.dbaas.com.br';
+$dbname = 'tcc_bd35';
+$username = 'tcc_bd35';
+$password = 'ROSA123456a#';
 
-// try {
-//     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
-//     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
-//     // Busca as informações atualizadas do hospital logado
-//     $stmt = $pdo->prepare("SELECT * FROM `tabHospitais` WHERE ID = :id");
-//     $stmt->bindParam(':id', $_SESSION['usuario_id'], PDO::PARAM_INT);
-//     $stmt->execute();
-//     $dadosHospital = $stmt->fetch(PDO::FETCH_ASSOC);
+    // Busca as informações atualizadas do hospital logado
+    $stmt = $pdo->prepare("SELECT * FROM `tabHospitais` WHERE ID = :id");
+    $stmt->bindParam(':id', $_SESSION['usuario_id'], PDO::PARAM_INT);
+    $stmt->execute();
+    $dadosHospital = $stmt->fetch(PDO::FETCH_ASSOC);
     
-//     if (!$dadosHospital) {
-//         echo "Dados do hospital não encontrados.";
-//         exit;
-//     }
+    if (!$dadosHospital) {
+        echo "Dados do hospital não encontrados.";
+        exit;
+    }
     
-//     // Força a atualização do nome da sessão com o dado real vindo do banco
-//     $_SESSION['usuario_nome'] = $dadosHospital['nome'];
+    // Força a atualização do nome da sessão com o dado real vindo do banco
+    $_SESSION['usuario_nome'] = $dadosHospital['nome'];
 
-// } catch (PDOException $e) {
-//     echo "Erro na conexão: " . $e->getMessage();
-//     exit;
-// }
+} catch (PDOException $e) {
+    echo "Erro na conexão: " . $e->getMessage();
+    exit;
+}
 ?>
 <!doctype html>
 <html lang="pt-br">

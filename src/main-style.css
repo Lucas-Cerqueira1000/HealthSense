@@ -365,3 +365,17 @@ html {
         background-color: transparent;
     }
 }
+#icone-audio {
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+/* Efeito ao passar o mouse */
+#icone-audio:hover {
+    transform: scale(1.15);
+    color: var(--verde); /* Cor verde (exemplo Bootstrap btn-success) */
+}
+
+/* Efeito de clique */
+#icone-audio:active {
+    transform: scale(0.95);
+}
