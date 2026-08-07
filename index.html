@@ -3,7 +3,7 @@
     <head>
         <title>Página Inicial</title>
         <meta charset="utf-8" />
-        <link rel="icon" href="img/logo1.png">
+        <link rel="icon" href="logo1.png">
         <meta
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
@@ -79,6 +79,7 @@
                     top: 0;
                 }
             }
+
             /* ESTILOS DO FAQ */
             .faq-container 
             {
@@ -141,25 +142,14 @@
                 transform: rotate(90deg);
             }
             .faq-answer {
-                display: grid;
-                grid-template-rows: 0fr;
-                transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1);
                 background-color: var(--verdeescuro);
             }
-            .faq-item[open] .faq-answer {
-                grid-template-rows: 1fr;
-            }
             .faq-answer-content {
-                overflow: hidden;
-                padding: 0 20px;
+                padding: 16px 20px;
+                border-top: 1px solid rgba(255, 255, 255, 0.2);
                 color: white;
                 line-height: 1.6;
                 font-size: 0.95rem;
-                transition: padding 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            }
-            .faq-item[open] .faq-answer-content {
-                padding: 16px 20px;
-                border-top: 1px solid rgba(255, 255, 255, 0.2);
             }
             @media(max-width: 640px) {
                 .faq-container {
@@ -169,6 +159,7 @@
                     font-size: 0.95rem; 
                 }
             }
+
             body
             {
                 display: flex;
@@ -219,7 +210,7 @@
                 transform: translateY(0);
               }
             }
-            #nosso_proposito, #historia, #FAQ
+            #nosso_proposito, #historia
             {
               opacity: 0; 
               animation: surgir ease-out forwards;
@@ -359,7 +350,7 @@
                 clip-path: inset(0 0 0 0);
               }
             }
-            .texto-revelar, #nosso_proposito, #historia, #FAQ {
+            .texto-revelar, #nosso_proposito, #historia {
               opacity: 1; 
 
               @supports (animation-timeline: view()) {
@@ -391,6 +382,14 @@
                 {
                     width: -80vw;
                 }
+            }
+            #carousel-ods
+            {
+                background-color: var(--verde);
+            }
+            .transparente
+            {
+                background-color: transparent;
             }
         </style>
     </head>
@@ -454,13 +453,13 @@
                 <div class="card" style="width: 25rem;">
                   <img class="card-img-top img-fluid rounded img-thumbnail" src="img/HomeMedico.png" alt="Card image cap">
                   <div class="card-body">
-                    <p class="card-text fw-bold">Tela do médico logado.</p>
+                    <p class="card-text fw-bold">Tela do médico.</p>
                   </div>
                 </div>
                 <div class="card" style="width: 25rem;">
                   <img class="card-img-top img-fluid rounded img-thumbnail" src="img/HomePaciente.png" alt="Card image cap">
                   <div class="card-body">
-                    <p class="card-text fw-bold">Tela do paciente logado.</p>
+                    <p class="card-text fw-bold">Tela do paciente.</p>
                   </div>
                 </div>
             </section>
@@ -486,19 +485,19 @@
                 <p class="text-center container" id="nossoprojeto">Nosso principal propósito é contribuir com as ODS(Objetivos de Desenvolvimento Sustentável) a fim de tornar o mundo um lugar melhor, transformar os hospitais públicos com tecnologia custo-benefício e aplicações reais em momentos requeridos.</p>
             </section>
 
-            <section id="proposito" class="text-center container">
-                <div class="carousel-container" id="carousel-ods">
-                    <div class="carousel-slide">
-                        <div class="custom-carousel-item">
-                            <img src="img/ods3.webp" alt="ODS 3 - Saúde e Bem-Estar" class="rounded shadow">
+            <section id="proposito" class="text-center container transparente">
+                <div class="carousel-container transparente" id="carousel-ods">
+                    <div class="carousel-slide transparente">
+                        <div class="custom-carousel-item transparente">
+                            <img src="img/ods3.png" alt="ODS 3 - Saúde e Bem-Estar" class="rounded shadow img-fluid rounded img-thumbnail transparente">
                             <div class="caption">ODS 3: Saúde e Bem-Estar</div>
                         </div>     
                         <div class="custom-carousel-item">
-                            <img src="img/ods9.webp" alt="ODS 9 - Indústria, Inovação e Infraestrutura" class="rounded shadow">
+                            <img src="img/ods9.png" alt="ODS 9 - Indústria, Inovação e Infraestrutura" class="rounded shadow img-fluid rounded img-thumbnail transparente">
                             <div class="caption">ODS 9: Indústria, Inovação e Infraestrutura</div>
                         </div>
                         <div class="custom-carousel-item">
-                            <img src="img/ods10.webp" alt="ODS 10 - Redução das Desigualdades" class="rounded shadow">
+                            <img src="img/ods10.png" alt="ODS 10 - Redução das Desigualdades" class="rounded shadow img-fluid rounded img-thumbnail transparente">
                             <div class="caption">ODS 10: Redução das Desigualdades</div>
                         </div>
                     </div>
@@ -659,16 +658,69 @@
         <script>
             document.querySelectorAll('.faq-item').forEach(details => {
                 const summary = details.querySelector('summary');
+                const answer = details.querySelector('.faq-answer');
+                let animation = null;
+                let isClosing = false;
+                let isExpanding = false;
 
                 summary.addEventListener('click', (e) => {
-                    e.preventDefault(); 
-                    
-                    if (details.hasAttribute('open')) {
-                        details.removeAttribute('open');
-                    } else {
-                        details.setAttribute('open', '');
+                    e.preventDefault();
+                    if (isClosing || !details.open) {
+                        openFAQ();
+                    } else if (isExpanding || details.open) {
+                        closeFAQ();
                     }
                 });
+
+                function openFAQ() {
+                    details.style.height = `${details.offsetHeight}px`;
+                    details.open = true;
+                    window.requestAnimationFrame(() => expand());
+                }
+
+                function expand() {
+                    isExpanding = true;
+                    const startHeight = details.offsetHeight;
+                    const endHeight = summary.offsetHeight + answer.offsetHeight;
+
+                    if (animation) animation.cancel();
+
+                    animation = details.animate({
+                        height: [`${startHeight}px`, `${endHeight}px`]
+                    }, {
+                        duration: 300,
+                        easing: 'ease-out'
+                    });
+
+                    animation.onfinish = () => onAnimationFinish(true);
+                    animation.oncancel = () => isExpanding = false;
+                }
+
+                function closeFAQ() {
+                    isClosing = true;
+                    const startHeight = details.offsetHeight;
+                    const endHeight = summary.offsetHeight;
+
+                    if (animation) animation.cancel();
+
+                    animation = details.animate({
+                        height: [`${startHeight}px`, `${endHeight}px`]
+                    }, {
+                        duration: 250,
+                        easing: 'ease-out'
+                    });
+
+                    animation.onfinish = () => onAnimationFinish(false);
+                    animation.oncancel = () => isClosing = false;
+                }
+
+                function onAnimationFinish(openState) {
+                    details.open = openState;
+                    animation = null;
+                    isClosing = false;
+                    isExpanding = false;
+                    details.style.height = '';
+                }
             });
         </script>
 
@@ -759,7 +811,7 @@
 
         <script>
             document.addEventListener("DOMContentLoaded", function () {
-                const elementos = document.querySelectorAll(".revelar-scroll, #nosso_proposito, #historia, #FAQ");
+                const elementos = document.querySelectorAll(".revelar-scroll, #nosso_proposito, #historia");
 
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach((entry) => {
